@@ -2697,17 +2697,17 @@ containing a value of this type.
         public static final int twitter_button=0x7f0200a6;
     }
     public static final class id {
-        public static final int AboutUs=0x7f0e00d9;
+        public static final int AboutUs=0x7f0e00d8;
         public static final int Coverpage=0x7f0e0083;
-        public static final int Help=0x7f0e00da;
-        public static final int Home=0x7f0e00d5;
-        public static final int Login=0x7f0e00d6;
+        public static final int Help=0x7f0e00d9;
+        public static final int Home=0x7f0e00d4;
+        public static final int Login=0x7f0e00d5;
         public static final int Main_Frame=0x7f0e00bf;
-        public static final int MyRecyclerView=0x7f0e00d4;
+        public static final int MyRecyclerView=0x7f0e00d3;
         public static final int NavigationDrawer=0x7f0e00bd;
         public static final int NavigationView=0x7f0e00c3;
-        public static final int Search=0x7f0e00d8;
-        public static final int SubmitAd=0x7f0e00d7;
+        public static final int Search=0x7f0e00d7;
+        public static final int SubmitAd=0x7f0e00d6;
         public static final int action0=0x7f0e00c6;
         public static final int action_bar=0x7f0e006d;
         public static final int action_bar_activity_content=0x7f0e0000;
@@ -2857,7 +2857,6 @@ containing a value of this type.
         public static final int radio_buy_rent=0x7f0e00ab;
         public static final int rent_button=0x7f0e00ac;
         public static final int right=0x7f0e0023;
-        public static final int rv_toolbar=0x7f0e00d3;
         public static final int screen=0x7f0e0027;
         public static final int scroll=0x7f0e0018;
         public static final int scrollIndicatorDown=0x7f0e0061;

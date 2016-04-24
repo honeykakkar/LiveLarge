@@ -34,9 +34,10 @@ public class FirebaseRVAdapter extends FirebaseRecyclerAdapter<SerializablePropD
     @Override
     protected void populateViewHolder(MyViewHolder myViewHolder, SerializablePropData serializablepropdata, int i)
     {
-        myViewHolder.PropertyBeds.setText(serializablepropdata.getProp_bed());
+        myViewHolder.PropertyBeds.setText(serializablepropdata.getProp_bed().concat(" BHK"));
         myViewHolder.PropertyName.setText(serializablepropdata.getProp_name());
-        myViewHolder.PropertyPrice.setText(serializablepropdata.getProp_price());
+        String Price = "Price $";
+        myViewHolder.PropertyPrice.setText(Price.concat(serializablepropdata.getProp_price()));
         myViewHolder.PropertyType.setText(serializablepropdata.getProp_type());
         //Picasso.with(context).load(serializablepropdata.getImageURLs()).into(myViewHolder.PropertyImage);
     }
