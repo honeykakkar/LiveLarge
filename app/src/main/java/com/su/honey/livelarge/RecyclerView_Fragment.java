@@ -23,7 +23,7 @@ import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
  */
 public class RecyclerView_Fragment extends android.support.v4.app.Fragment implements View.OnClickListener
 {
-    Toolbar Top;
+    //Toolbar Top;
     public RecyclerView_Fragment(){}
     private static final String SECTION = "SECTION";
     static int ID;
@@ -49,8 +49,8 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         setRetainInstance(true);
-        Top = (Toolbar)getActivity().findViewById(R.id.action_toolbar);
-        /*Top.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        /*Top = (Toolbar)getActivity().findViewById(R.id.action_toolbar);
+        Top.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int ItemID = item.getItemId();
@@ -83,6 +83,7 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
 
         MyRCLManager = new LinearLayoutManager(getActivity());
         MyRCView.setLayoutManager(MyRCLManager);
+
         final Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings/");
         MyFirebaseRVAdapter = new FirebaseRVAdapter(SerializablePropData.class, R.layout.cardview,
                 FirebaseRVAdapter.MyViewHolder.class, QueryRef, getActivity());

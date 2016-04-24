@@ -38,7 +38,7 @@ public class FirebaseRVAdapter extends FirebaseRecyclerAdapter<SerializablePropD
         myViewHolder.PropertyName.setText(serializablepropdata.getProp_name());
         myViewHolder.PropertyPrice.setText(serializablepropdata.getProp_price());
         myViewHolder.PropertyType.setText(serializablepropdata.getProp_type());
-        Picasso.with(context).load(serializablepropdata.getImageURLs()).into(myViewHolder.PropertyImage);
+        //Picasso.with(context).load(serializablepropdata.getImageURLs()).into(myViewHolder.PropertyImage);
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -53,7 +53,7 @@ public class FirebaseRVAdapter extends FirebaseRecyclerAdapter<SerializablePropD
             super(V);
             PropertyType = (TextView) V.findViewById(R.id.card_type);
             PropertyBeds = (TextView) V.findViewById(R.id.card_bed);
-            PropertyImage = (ImageView) V.findViewById(R.id.card_image);
+            //PropertyImage = (ImageView) V.findViewById(R.id.card_image);
             PropertyName = (TextView) V.findViewById(R.id.card_name);
             PropertyPrice = (TextView) V.findViewById(R.id.card_price);
         }

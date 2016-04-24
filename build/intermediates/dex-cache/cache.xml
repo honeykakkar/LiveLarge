@@ -1,3 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.firebase\tubesock\0.0.12\6ec0bbd3e161a73ed672284b587fd32309a86d7a\tubesock-0.0.12.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\tubesock-0.0.12_14681046f7b728eb527cff243b562f43a6570536.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.1_96a6e7e24269620b7aedc0c284d70042ae2660cc.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_60f101624f55ebd14de0a4da78ca083828ec93c1.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-jvm\2.5.1\11ea7eeda00b1bb92accba250ee7c8740bdebc19\firebase-client-jvm-2.5.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="11ea7eeda00b1bb92accba250ee7c8740bdebc19">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\firebase-client-jvm-2.5.1_e1b0d3fd9c6e41dcc429464bd9effca7f0b0b24f.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.firebaseui\firebase-ui\0.3.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5f34a8aeb0eaaa2d69752d56102a8c808117058e">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.firebaseui-firebase-ui-0.3.1_696580e7fbdbbed2c42eb3cae6f838c15c37f358.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.1_16ae8212265643485737ef2c3b040bdd5acbfda5.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_dfffc5623b01bb09b35f95e39483401754fa5be9.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\jp.wasabeef\recyclerview-animators\2.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1e90b641e3b5c9e9c63dc0b320d8dc1fe649bc9f">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\jp.wasabeef-recyclerview-animators-2.2.0_acdbcbedecf22a673135421e34520988588243e3.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.11.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="86da97c30f50a67ddabe2cf7040713ad17153fce">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.facebook.android-facebook-android-sdk-4.11.0_74177ac8da7595e3b0e6c15a375b7c0ce788c1fc.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_b7d1ef41966751df92dfaab116ef91ddb4c5678b.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_713f286a45f05d2906fe85f0e1272a45b4e93a6b.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_3e88bd49ffb6378dbd79cef6a462051f63356e8d.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fd76d95678a6b2b8a49bb8a9fb5bcef7aedb70e7">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-8.3.0_8d4ab222b51ee739712e9c8814123a7dcd6e090d.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.2.2\3c8f6018eaa72d43b261181e801e6f8676c16ef6\jackson-databind-2.2.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\jackson-databind-2.2.2_bfb16a98bb40c7259926e9027c2546e6c2957ce7.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="345a1b5cf5b144ce18ba6962bc66a7e2f26c1c1b">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.3.0_9ea24efa189fa8f46078a5a3c557c9041d8f7955.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="28877a8d9d238cc6e1cc6b5f5863da40f82eaf8e">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7cbc976bc1e8726aa27dafd1271e87429e091289.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-android\2.5.1\8c94ae916de454be497782505e3e6fd437a28b95\firebase-client-android-2.5.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8c94ae916de454be497782505e3e6fd437a28b95">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\firebase-client-android-2.5.1_56827efec963e145fa7b9564608637c7caec78b2.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_e9da0a6095c10b4113fc04586fd9ba25e8b862bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.1_0a11e6e636b91d14ea66c309851c36ce975e999d.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\customtabs\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0e5a66a941515d873a34065fe44fbba6ef422a1b">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.android.support-customtabs-23.2.1_3a346f3296c0355c427b864f99bdf27c3885045b.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.2.2\d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b\jackson-core-2.2.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.2_c8fa04fdcee57330af3785475faf1d6d18a3cad5.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ba1ed3e7010238ea5a0bcf1bece8efa2899cea0d">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\instant-run_3437f964cdf81dae4666a7cff608b0e5f83b3d7a.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.2.2\285cb9c666f0f0f3dd8a1be04e1f457eb7b15113\jackson-annotations-2.2.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.2.2_5d550ad2562ead4fdad650070f4fafd892bfea3e.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="cb86970df0f0f25f766d320b279c7858c1ca0003">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.2.1_a8deeb55de4ac3956d4d8b8053650819d647aba6.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="01a90bbb9495a8bbf6f3cfdf12f1b35caaa9524b">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.3.0_7c548813290ec0a70b9209761d41b941be007732.jar" />
+    </item>
+    <item
+        jar="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\pre-dexed\debug\de.hdodenhof-circleimageview-2.0.0_c8420dea4e28335c1dd0cdfcad8a33e662a63e96.jar" />
+    </item>
+
+</items>
