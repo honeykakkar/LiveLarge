@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">LiveLarge</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+    <string name="facebook_app_id">1716213881996269</string>
+    <string name="search_hint">Enter area or locality</string>
+    <string-array name="bedroom_array">
+        <item>1 BHK</item>
+        <item>2 BHK</item>
+        <item>3 BHK</item>
+        <item>4 BHK</item>
+        <item>4+ BHK</item>
+    </string-array>
+    <string-array name="prop_type_array">
+        <item>Apartment</item>
+        <item>Studios</item>
+        <item>House</item>
+        <item>Villa</item>
+    </string-array>
+    <string-array name="prop_furnish">
+        <item>Furnished</item>
+        <item>Unfurnished</item>
+        <item>Any</item>
+    </string-array>
+</resources>

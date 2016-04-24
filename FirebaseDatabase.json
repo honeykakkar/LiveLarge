@@ -1,0 +1,68 @@
+{"Listings":
+  {
+    "syr_westcott426": {
+        "prop_name": "426 Westcott Street, #Apt 1",
+        "prop_type": "Apartment",
+        "prop_price": "1700",
+        "prop_bed": "4",
+        "prop_AvailDate": "Aug 1 2016",
+        "prop_city": "Syracuse",
+        "prop_state": "New York",
+        "prop_description": "Close to Papa Johns, 1 min walk to bus stops, 15 min walk to college",
+        "prop_furnished": "Furnished",
+        "imageURLs": "426_1.jpeg",
+        "prop_owner": "Art Zuk",
+		"prop_address": "426 Westcott Street, #Apt 1",
+		"prop_amenities": "Including utilities, Wi-Fi",
+		"prop_area": "1112"
+    },
+    "syr_westcott420": {
+        "prop_name": "420 Westcott Street, #Apt 1",
+        "prop_type": "Apartment",
+        "prop_price": "2000",
+        "prop_bed": "5",
+        "prop_AvailDate": "Aug 15 2016",
+        "prop_city": "Syracuse",
+        "prop_state": "New York",
+        "prop_description": "Close to Papa Johns, 1 min walk to bus stops, 15 min walk to college",
+        "prop_furnished": "Furnished",
+        "imageURLs": "420_1.jpeg",
+        "prop_owner": "SQL",
+		"prop_address": "420 Westcott Street, #Apt 1",
+		"prop_amenities": "Including utilities, Wi-Fi",
+		"prop_area": "1112"
+    },
+	"syr_westcott440": {
+        "prop_name": "440 Westcott Street, #Apt 1",
+        "prop_type": "Apartment",
+        "prop_price": "2000",
+        "prop_bed": "4",
+        "prop_AvailDate": "Aug 1 2016",
+        "prop_city": "Syracuse",
+        "prop_state": "New York",
+        "prop_description": "Close to Papa Johns, 1 min walk to bus stops, 15 min walk to college",
+        "prop_furnished": "Furnished",
+        "imageURLs": "440_1.jpeg",
+        "prop_owner": "Jose",
+		"prop_address": "440 Westcott Street, #Apt 1",
+		"prop_amenities": "Including utilities, Wi-Fi",
+		"prop_area": "1210"
+    },
+	"syr_westcott917": {
+        "prop_name": "917 Westcott Street, #Apt 1",
+        "prop_type": "Apartment",
+        "prop_price": "2000",
+        "prop_bed": "4",
+        "prop_AvailDate": "May 15 2016",
+        "prop_city": "Syracuse",
+        "prop_state": "New York",
+        "prop_description": "Close to Graby's, 2 min walk to bus stops, 25 min walk to college",
+        "prop_furnished": "Unfurnished",
+        "imageURLs": "917_1.jpeg",
+        "prop_owner": "SQL",
+		"prop_address": "917 Westcott Street, #Apt 1",
+		"prop_amenities": "Including utilities, Wi-Fi",
+		"prop_area": "1112"
+    }
+  }
+}
