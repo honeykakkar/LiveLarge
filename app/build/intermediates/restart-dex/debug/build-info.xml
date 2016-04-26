@@ -4,40 +4,31 @@
     api-level="22"
     density="xxhdpi"
     format="7"
-    timestamp="484370586922271" >
+    timestamp="636061366702617" >
 
     <task
         name="javac"
-        duration="1088" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="86" />
+        duration="0" />
     <task
         name="verifier"
-        duration="3" />
+        duration="0" />
 
-    <artifact
-        location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\res\resources-debug.ap_"
-        type="RESOURCES" />
-    <artifact
-        location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
-        type="DEX" />
-
-    <build timestamp="484022223951802" >
+    <build timestamp="629725665567605" >
         <artifact
             location="C:\Users\honey\Desktop\LiveLarge\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="484370586922271" >
-        <artifact
-            location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
+    <build timestamp="636009268566518" >
         <artifact
             location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
             type="DEX" />
     </build>
+    <build timestamp="636061366702617" />
 
 </instant-run>

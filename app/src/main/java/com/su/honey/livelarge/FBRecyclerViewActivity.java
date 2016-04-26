@@ -11,7 +11,7 @@ import com.firebase.client.Firebase;
 /**
  * Created by honey on 2/13/2016.
  */
-public class RecyclerViewActivity extends AppCompatActivity implements OnClickIListener
+public class FBRecyclerViewActivity extends AppCompatActivity implements OnClickIListener
 {
     ActionBar MyActionBar;
     Toolbar MyToolBar;
@@ -23,8 +23,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-        Toast.makeText(RecyclerViewActivity.this, "Recycler View", Toast.LENGTH_SHORT).show();
-        RecyclerView_Fragment fragment;
+        Toast.makeText(FBRecyclerViewActivity.this, "Recycler View", Toast.LENGTH_SHORT).show();
+        RecyclerViewFB_Fragment fragment;
         MyToolBar = (Toolbar)findViewById(R.id.action_toolbar);
         setSupportActionBar(MyToolBar);
         MyActionBar = getSupportActionBar();
@@ -35,11 +35,11 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
             SearchObject = (SearchParams) getIntent().getSerializableExtra("searchobject");
         if (savedInstanceState != null)
         {
-            fragment = (RecyclerView_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+            fragment = (RecyclerViewFB_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
         }
         else
         {
-            RecyclerViewActivity.this.FragmentSelected(0);
+            FBRecyclerViewActivity.this.FragmentSelected(0);
         }
 
     }
@@ -47,7 +47,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
     @Override
     public void FragmentSelected(int Section) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.Coverpage, RecyclerView_Fragment.FragmentFactory(Section, SearchObject))
+                .replace(R.id.Coverpage, RecyclerViewFB_Fragment.FragmentFactory(Section, SearchObject))
                 .commit();
     }
 }

@@ -28,6 +28,9 @@
             android:name=".LoginActivity"
             android:theme="@style/AppThemeNoAB"></activity>
         <activity
+            android:name=".FBRecyclerViewActivity"
+            android:theme="@style/AppThemeNoAB"></activity>
+        <activity
             android:name=".RecyclerViewActivity"
             android:theme="@style/AppThemeNoAB"></activity>
         <activity

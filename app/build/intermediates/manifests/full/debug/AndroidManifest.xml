@@ -34,6 +34,9 @@
             android:name="com.su.honey.livelarge.LoginActivity"
             android:theme="@style/AppThemeNoAB" />
         <activity
+            android:name="com.su.honey.livelarge.FBRecyclerViewActivity"
+            android:theme="@style/AppThemeNoAB" />
+        <activity
             android:name="com.su.honey.livelarge.RecyclerViewActivity"
             android:theme="@style/AppThemeNoAB" />
         <activity
