@@ -81,7 +81,7 @@ public class SearchActivity extends AppCompatActivity{
                         Rent = false;
                 }
                 SearchParameters = new SearchParams(PropertyType,Furnished,Bedrooms,MinArea,MaxArea,MinBudget,MaxBudget,Rent, Locality);
-                Intent Results = new Intent(SearchActivity.this, RecyclerViewActivity.class);
+                Intent Results = new Intent(SearchActivity.this, FBRecyclerViewActivity.class);
                 Results.putExtra("searchobject", SearchParameters);
                 Results.putExtra("from", "SearchActivity");
                 SearchActivity.this.startActivity(Results);

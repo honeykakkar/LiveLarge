@@ -38,9 +38,6 @@
             android:name="com.su.honey.livelarge.FBRecyclerViewActivity"
             android:theme="@style/AppThemeNoAB" />
         <activity
-            android:name="com.su.honey.livelarge.RecyclerViewActivity"
-            android:theme="@style/AppThemeNoAB" />
-        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"

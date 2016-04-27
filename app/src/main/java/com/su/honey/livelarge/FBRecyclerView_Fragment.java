@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,12 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
@@ -25,19 +21,17 @@ import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 /**
  * Created by honey on 2/20/2016.
  */
-public class RecyclerView_Fragment extends android.support.v4.app.Fragment implements View.OnClickListener
+public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment implements View.OnClickListener
 {
     //Toolbar Top;
-    public RecyclerView_Fragment(){}
+    public FBRecyclerView_Fragment(){}
     private static final String SECTION = "SECTION";
     private static SearchParams FSearchObject = null;
     static int ID;
-    public List<SerializablePropData> ResultProps;
-    public List<SerializablePropData> Listings;
-    public static RecyclerView_Fragment FragmentFactory(int SectionID, SearchParams searchParams)
+    public static FBRecyclerView_Fragment FragmentFactory(int SectionID, SearchParams searchParams)
     {
         ID = SectionID;
-        RecyclerView_Fragment NewFragment = new RecyclerView_Fragment();
+        FBRecyclerView_Fragment NewFragment = new FBRecyclerView_Fragment();
         Bundle NewBundle = new Bundle();
         NewBundle.putInt(SECTION,SectionID);
         NewFragment.setArguments(NewBundle);
@@ -45,7 +39,7 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         return NewFragment;
     }
     private RecyclerView MyRCView;
-    private RecyclerViewAdapter MyRCAdapter;
+    private FBRecyclerViewAdapter MyFirebaseRVAdapter;
     private RecyclerView.LayoutManager MyRCLManager;
     protected OnClickIListener IReference;
     View RootView = null;
@@ -54,8 +48,8 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
-        Firebase.setAndroidContext(getActivity());
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         setRetainInstance(true);
     }
 
@@ -73,10 +67,15 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         {
             throw new ClassCastException("OOPS!!");
         }
+
         MyRCLManager = new LinearLayoutManager(getActivity());
         MyRCView.setLayoutManager(MyRCLManager);
-        MyRCAdapter = new RecyclerViewAdapter(getActivity(), ResultProps);
-        MyRCView.setAdapter(MyRCAdapter);
+
+        final Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
+        MyFirebaseRVAdapter = new FBRecyclerViewAdapter(SerializablePropData.class, R.layout.cardview,
+                FBRecyclerViewAdapter.MyViewHolder.class, QueryRef, getActivity(), FSearchObject);
+        MyRCView.setAdapter(MyFirebaseRVAdapter);
+        Log.d("Kakkar", "Honey");
         ItemAnimation();
         AdapterAnimation();
         return RootView;
@@ -93,7 +92,7 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
 
     public void AdapterAnimation()
     {
-        AlphaInAnimationAdapter ADP = new AlphaInAnimationAdapter(MyRCAdapter);
+        AlphaInAnimationAdapter ADP = new AlphaInAnimationAdapter(MyFirebaseRVAdapter);
         ScaleInAnimationAdapter AnimatedAdaptor = new ScaleInAnimationAdapter(ADP);
         MyRCView.setAdapter(AnimatedAdaptor);
     }
