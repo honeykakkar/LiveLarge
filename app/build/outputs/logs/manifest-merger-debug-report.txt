@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:2:1-47:12
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:5:5
 	android:name
 		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:7:5-45:19
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:7:5-49:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.2.1] C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.2.1] C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
@@ -42,77 +42,85 @@ MERGED from [com.android.support:cardview-v7:23.2.1] C:\Users\honey\Desktop\Live
 MERGED from [com.android.support:customtabs:23.2.1] C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\customtabs\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.2.1] C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:11:9-41
 	android:supportsRtl
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:11:9-35
-	android:allowBackup
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:8:9-35
-	android:icon
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:9:9-39
-	android:largeHeap
 		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:12:9-35
+	android:allowBackup
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:9:9-35
+	android:icon
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:10:9-39
+	android:largeHeap
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:13:9-40
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:14:9-40
+	android:name
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:8:9-65
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:14:9-16:55
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:15:9-17:55
 	android:value
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:16:13-52
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:17:13-52
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:15:13-58
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:16:13-58
 activity#com.su.honey.livelarge.MainActivity
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:18:9-26:20
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:19:9-27:20
 	android:theme
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:20:13-48
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:21:13-48
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:19:13-41
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:20:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:22:17-69
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:22:25-66
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:24:17-77
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:25:27-74
 activity#com.su.honey.livelarge.LoginActivity
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:27:9-29:60
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:28:9-30:60
 	android:theme
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:29:13-48
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:30:13-48
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:28:13-42
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:29:13-42
 activity#com.su.honey.livelarge.FBRecyclerViewActivity
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:30:9-32:60
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:31:9-33:60
 	android:theme
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:32:13-48
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:33:13-48
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:31:13-51
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:32:13-51
+activity#com.su.honey.livelarge.RecyclerViewActivity
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:34:9-36:60
+	android:theme
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:36:13-48
+	android:name
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:35:13-49
 activity#com.facebook.FacebookActivity
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:33:9-37:51
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:37:9-41:51
 	android:label
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:36:13-45
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:40:13-45
 	android:configChanges
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:35:13-96
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:39:13-96
 	android:theme
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:37:13-48
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:41:13-48
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:34:13-57
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:38:13-57
 activity#com.su.honey.livelarge.SearchActivity
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:38:9-44:20
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:42:9-48:20
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:38:19-49
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:42:19-49
 intent-filter#android.intent.action.SEARCH
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:39:13-41:29
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:43:13-45:29
 action#android.intent.action.SEARCH
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:40:17-71
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:44:17-71
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:40:25-68
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:44:25-68
 meta-data#android.app.searchable
-ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:42:13-43:53
+ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:46:13-47:53
 	android:resource
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:43:17-51
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:47:17-51
 	android:name
-		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:42:24-61
+		ADDED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml:46:24-61
 uses-sdk
 INJECTED from C:\Users\honey\Desktop\LiveLarge\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:20:5-43

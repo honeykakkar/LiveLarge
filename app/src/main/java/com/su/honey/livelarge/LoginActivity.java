@@ -39,7 +39,6 @@ public class LoginActivity extends FirebaseLoginBaseActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Firebase.setAndroidContext(this);
         firebaseRef = new Firebase(FIREBASEREF);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);

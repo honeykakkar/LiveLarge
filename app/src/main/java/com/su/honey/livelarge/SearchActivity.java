@@ -1,91 +1,90 @@
 package com.su.honey.livelarge;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-public class SearchActivity extends AppCompatActivity{
+import com.firebase.client.Firebase;
 
-    SearchParams SearchParameters;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchActivity extends AppCompatActivity implements OnClickIListener{
+
+    ActionBar MyActionBar;
     Toolbar MyToolBar;
+    List<Serializable_PropData> ResultProps = new ArrayList<Serializable_PropData>();;
+    static Firebase QueryRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_searchpage);
-        Toast.makeText(SearchActivity.this, "Search Page", Toast.LENGTH_SHORT).show();
-        MyToolBar = (Toolbar) findViewById(R.id.main_toolbar);
+        setContentView(R.layout.activity_recycler);
+        QueryRef = new Firebase("https://livelarge.firebasListingseio.com/");
+        MyToolBar = (Toolbar)findViewById(R.id.action_toolbar);
         setSupportActionBar(MyToolBar);
-        Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.search_background);
-        int nh = (int) (bitmapImage.getHeight() * (1080.0 / bitmapImage.getWidth()));
-        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1080, nh, true);
-        ImageView HomeImage = (ImageView) findViewById(R.id.search_image);
-        HomeImage.setImageBitmap(scaled);
-        HomeImage.setAlpha(0.6f);
-        Button SearchButton = (Button)findViewById(R.id.search_button);
-        SearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                String PropertyType = "Apartment";
-                String Furnished = "Any";
-                int Bedrooms = 1;
-                int MinArea = -1;
-                int MaxArea = -1;
-                int MinBudget = -1;
-                int MaxBudget = -1;
-                Boolean Rent = true;
-                String Locality = "";
-                Spinner PropertyTypeSpinner = (Spinner)findViewById(R.id.prop_type_spinner);
-                Spinner BedroomSpinner = (Spinner)findViewById(R.id.bedrooms_spinner);
-                EditText MinAreaText = (EditText)findViewById(R.id.text_min_area);
-                EditText MaxAreaText = (EditText)findViewById(R.id.text_max_area);
-                RadioGroup BuyRent = (RadioGroup)findViewById(R.id.radio_buy_rent);
-                EditText MinBudText = (EditText)findViewById(R.id.text_min_budget);
-                EditText MaxBudText = (EditText)findViewById(R.id.text_max_budget);
-                android.widget.SearchView LocalitySearch = (android.widget.SearchView) findViewById(R.id.searchView);
-                if(LocalitySearch!=null)
-                    Locality = LocalitySearch.getQuery().toString();
-                if(PropertyTypeSpinner!=null)
-                    PropertyType = PropertyTypeSpinner.getSelectedItem().toString();
-                if(BedroomSpinner!=null)
-                {
-                    Bedrooms = Integer.parseInt(BedroomSpinner.getSelectedItem().toString().substring(0, 1));
-                    if(Bedrooms == 4 && BedroomSpinner.getSelectedItemPosition() == 4)
-                        Bedrooms = 5;
-                }
-                if(MinAreaText!=null)
-                    MinArea = Integer.parseInt(MinAreaText.getText().toString());
-                if(MaxAreaText!=null)
-                    MaxArea = Integer.parseInt(MaxAreaText.getText().toString());
-                if(MinBudText!=null)
-                    MinBudget = Integer.parseInt(MinBudText.getText().toString());
-                if(MaxBudText!=null)
-                    MaxBudget = Integer.parseInt(MaxBudText.getText().toString());
-                if(BuyRent != null)
-                {
-                    RadioButton SelectedRB = (RadioButton)findViewById(BuyRent.getCheckedRadioButtonId());
-                    if(SelectedRB.getText().equals("BUY"))
-                        Rent = false;
-                }
-                SearchParameters = new SearchParams(PropertyType,Furnished,Bedrooms,MinArea,MaxArea,MinBudget,MaxBudget,Rent, Locality);
-                Intent Results = new Intent(SearchActivity.this, FBRecyclerViewActivity.class);
-                Results.putExtra("searchobject", SearchParameters);
-                Results.putExtra("from", "SearchActivity");
-                SearchActivity.this.startActivity(Results);
-            }
-        });
+        MyActionBar = getSupportActionBar();
+        if(MyActionBar!=null)
+        {MyActionBar.setDisplayHomeAsUpEnabled(true);
+        MyActionBar.setDisplayShowTitleEnabled(false);}
+        Toast.makeText(SearchActivity.this, "Search Page", Toast.LENGTH_SHORT).show();
+        Search_Fragment searchFragment;
+        if (savedInstanceState != null)
+            searchFragment = (Search_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+        else
+            SearchActivity.this.FragmentSelected(0);
+
+    }
+
+    @Override
+    public void FragmentSelected(int Section) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.Coverpage, Search_Fragment.FragmentFactory(Section))
+                .commit();
+    }
+
+    @Override
+    public void StartIntent(SearchParams SearchParameters) {
+        for(int i =0; i<AllListings.All_Listings.size(); ++i)
+        {
+            Serializable_PropData Current = AllListings.All_Listings.get(i);
+            if(SearchParameters.getCity().equalsIgnoreCase(Current.getProp_city())
+                    && SearchParameters.getState().equalsIgnoreCase(Current.getProp_state())
+                    && SearchParameters.getPropertyType().equalsIgnoreCase(Current.getProp_type())
+                    && SearchParameters.getBedrooms() == Integer.parseInt(Current.getProp_bed())
+                    && SearchParameters.getListType().equalsIgnoreCase(Current.getList_type()))
+                ResultProps.add(Current);
+        }
+        for(int i=0; i<ResultProps.size(); ++i)
+        {
+            Serializable_PropData Current = ResultProps.get(i);
+            if(SearchParameters.getMinArea() !=0
+                    && Integer.parseInt(Current.getProp_area()) < SearchParameters.getMinArea())
+                ResultProps.remove(i);
+            if(SearchParameters.getMaxArea() !=0
+                    && Integer.parseInt(Current.getProp_area()) > SearchParameters.getMaxArea())
+                ResultProps.remove(i);
+            if(SearchParameters.getMinBudget() !=0
+                    && Integer.parseInt(Current.getProp_price()) < SearchParameters.getMinBudget())
+                ResultProps.remove(i);
+            if(SearchParameters.getMaxBudget() !=0
+                    && Integer.parseInt(Current.getProp_area()) > SearchParameters.getMaxBudget())
+                ResultProps.remove(i);
+        }
+        Intent Results = new Intent(SearchActivity.this, RecyclerViewActivity.class);
+        Results.putExtra("resultobject", (Serializable) ResultProps);
+        Results.putExtra("from", "SearchActivity");
+        SearchActivity.this.startActivity(Results);
+    }
+
+    @Override
+    public void GetPropDetails(Serializable_PropData SP) {
+
     }
 }

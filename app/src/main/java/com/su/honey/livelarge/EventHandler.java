@@ -10,5 +10,5 @@ import java.util.Map;
  */
 public interface EventHandler
 {
-    public void onPopUpMenuClick(View V, int position);
+    public void GetDetails(Serializable_PropData SP);
 }

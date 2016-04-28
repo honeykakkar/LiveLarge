@@ -11,4 +11,6 @@ import java.util.Map;
 public interface OnClickIListener
 {
     public void FragmentSelected(int Section);
+    public void StartIntent(SearchParams searchParams);
+    public void GetPropDetails(Serializable_PropData SP);
 }

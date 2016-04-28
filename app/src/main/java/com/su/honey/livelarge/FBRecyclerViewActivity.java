@@ -17,7 +17,6 @@ public class FBRecyclerViewActivity extends AppCompatActivity implements OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        //Firebase.setAndroidContext(this);
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
@@ -33,13 +32,9 @@ public class FBRecyclerViewActivity extends AppCompatActivity implements OnClick
         if( getIntent().getStringExtra("from").equalsIgnoreCase("SearchActivity"))
             SearchObject = (SearchParams) getIntent().getSerializableExtra("searchobject");
         if (savedInstanceState != null)
-        {
             fragment = (FBRecyclerView_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
-        }
         else
-        {
             FBRecyclerViewActivity.this.FragmentSelected(0);
-        }
 
     }
 
@@ -49,4 +44,15 @@ public class FBRecyclerViewActivity extends AppCompatActivity implements OnClick
                 .replace(R.id.Coverpage, FBRecyclerView_Fragment.FragmentFactory(Section, SearchObject))
                 .commit();
     }
+
+    @Override
+    public void StartIntent(SearchParams searchParams) {
+
+    }
+
+    @Override
+    public void GetPropDetails(Serializable_PropData SP) {
+
+    }
+
 }

@@ -72,10 +72,9 @@ public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment imp
         MyRCView.setLayoutManager(MyRCLManager);
 
         final Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
-        MyFirebaseRVAdapter = new FBRecyclerViewAdapter(SerializablePropData.class, R.layout.cardview,
+        MyFirebaseRVAdapter = new FBRecyclerViewAdapter(Serializable_PropData.class, R.layout.cardview,
                 FBRecyclerViewAdapter.MyViewHolder.class, QueryRef, getActivity(), FSearchObject);
         MyRCView.setAdapter(MyFirebaseRVAdapter);
-        Log.d("Kakkar", "Honey");
         ItemAnimation();
         AdapterAnimation();
         return RootView;

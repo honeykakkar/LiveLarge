@@ -4,7 +4,7 @@
     api-level="22"
     density="xxhdpi"
     format="7"
-    timestamp="77886033218422" >
+    timestamp="120898878757734" >
 
     <task
         name="javac"
@@ -19,31 +19,16 @@
         name="verifier"
         duration="0" />
 
-    <artifact
-        location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
-        type="DEX" />
-
-    <build timestamp="75044217160639" >
+    <build timestamp="118661402144240" >
         <artifact
             location="C:\Users\honey\Desktop\LiveLarge\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="75893387234982" >
-        <artifact
-            location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
-    </build>
-    <build
-        timestamp="77862471614374"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\builds\debug\77862471614374\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build timestamp="77886033218422" >
+    <build timestamp="120824679894802" >
         <artifact
             location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
             type="DEX" />
     </build>
+    <build timestamp="120898878757734" />
 
 </instant-run>

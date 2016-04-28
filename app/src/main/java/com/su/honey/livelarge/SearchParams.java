@@ -67,12 +67,12 @@ public class SearchParams implements Serializable
         MaxBudget = maxBudget;
     }
 
-    public Boolean getRent() {
-        return Rent;
+    public String getListType() {
+        return ListType;
     }
 
-    public void setRent(Boolean rent) {
-        Rent = rent;
+    public void setListType(String listType) {
+        ListType = listType;
     }
 
     public String getLocality() {
@@ -83,7 +83,23 @@ public class SearchParams implements Serializable
         Locality = locality;
     }
 
-    public SearchParams(String propertyType, String furnished, int bedrooms, int minArea, int maxArea, int minBudget, int maxBudget, Boolean rent, String locality) {
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public void setState(String state) {
+        State = state;
+    }
+
+    public SearchParams(String propertyType, String furnished, int bedrooms, int minArea, int maxArea, int minBudget, int maxBudget, String listType, String locality) {
         PropertyType = propertyType;
         Furnished = furnished;
         Bedrooms = bedrooms;
@@ -91,8 +107,22 @@ public class SearchParams implements Serializable
         MaxArea = maxArea;
         MinBudget = minBudget;
         MaxBudget = maxBudget;
-        Rent = rent;
+        ListType = listType;
         Locality = locality;
+    }
+
+    public SearchParams(String propertyType, String furnished, int bedrooms, int minArea, int maxArea, int minBudget, int maxBudget, String listType, String locality, String city, String state) {
+        PropertyType = propertyType;
+        Furnished = furnished;
+        Bedrooms = bedrooms;
+        MinArea = minArea;
+        MaxArea = maxArea;
+        MinBudget = minBudget;
+        MaxBudget = maxBudget;
+        ListType = listType;
+        Locality = locality;
+        City = city;
+        State = state;
     }
 
     private String PropertyType;
@@ -102,6 +132,8 @@ public class SearchParams implements Serializable
     private int MaxArea;
     private int MinBudget;
     private int MaxBudget;
-    private Boolean Rent;
+    private String ListType;
     private String Locality;
+    private String City;
+    private String State;
 }

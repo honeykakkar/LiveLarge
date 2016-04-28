@@ -12,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,11 +28,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView MyNavView;
     DrawerLayout MyDrawLayout;
     Toolbar MyToolBar;
+    Firebase Queryref;
+    String A;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        Firebase.setAndroidContext(this);
+        Queryref = new Firebase("https://livelarge.firebaseio.com/Listings");
+        Queryref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String A = "";
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
@@ -59,6 +73,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1080, nh, true);
         ImageView HomeImage = (ImageView)findViewById(R.id.home_image);
         HomeImage.setImageBitmap(scaled);
+    }
+
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte= Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
     }
 
     @Override
