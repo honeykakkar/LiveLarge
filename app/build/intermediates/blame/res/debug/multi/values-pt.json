@@ -1318,8 +1318,122 @@
                     "startLine": 71,
                     "startColumn": 4,
                     "startOffset": 8768,
+                    "endColumn": 114,
+                    "endOffset": 8878
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-pt\\values-pt.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 114,
+                        "endOffset": 403
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 8883,
+                    "endColumn": 115,
+                    "endOffset": 8994
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-pt\\values-pt.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 408,
+                        "endColumn": 115,
+                        "endOffset": 519
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 8999,
+                    "endColumn": 110,
+                    "endOffset": 9105
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-pt\\values-pt.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 524,
+                        "endColumn": 110,
+                        "endOffset": 630
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 9110,
+                    "endColumn": 105,
+                    "endOffset": 9211
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-pt\\values-pt.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 635,
+                        "endColumn": 105,
+                        "endOffset": 736
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 9216,
+                    "endColumn": 86,
+                    "endOffset": 9298
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-pt\\values-pt.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 741,
+                        "endColumn": 86,
+                        "endOffset": 823
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 9303,
+                    "endColumn": 98,
+                    "endOffset": 9397
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-pt\\values-pt.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 828,
+                        "endColumn": 98,
+                        "endOffset": 922
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 77,
+                    "startColumn": 4,
+                    "startOffset": 9402,
                     "endColumn": 100,
-                    "endOffset": 8864
+                    "endOffset": 9498
                 },
                 "from": {
                     "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-pt\\values-pt.xml",
@@ -1329,6 +1443,25 @@
                         "startOffset": 2222,
                         "endColumn": 100,
                         "endOffset": 2318
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 78,
+                    "startColumn": 4,
+                    "startOffset": 9503,
+                    "endColumn": 109,
+                    "endOffset": 9608
+                },
+                "from": {
+                    "file": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-wallet\\8.3.0\\res\\values-pt\\wallet_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 230,
+                        "endColumn": 109,
+                        "endOffset": 335
                     }
                 }
             }

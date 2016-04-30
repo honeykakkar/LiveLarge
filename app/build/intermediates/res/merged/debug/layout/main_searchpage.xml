@@ -197,17 +197,23 @@
             android:layout_alignRight="@+id/min_area"
             android:layout_alignEnd="@+id/searchView"
             android:layout_alignBottom="@+id/min_area"
+            android:hint="Enter min area"
             android:textSize="14sp"
-            android:id="@+id/text_min_area"/>
+            android:id="@+id/text_min_area"
+            android:textColor="@color/White"
+            android:textColorHint="@color/Grey" />
 
         <EditText
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/max_area"
             android:layout_alignEnd="@+id/searchView"
+            android:hint="Enter max area"
             android:layout_alignBottom="@+id/max_area"
             android:textSize="14sp"
-            android:id="@+id/text_max_area"/>
+            android:id="@+id/text_max_area"
+            android:textColor="@color/White"
+            android:textColorHint="@color/Grey" />
 
         <EditText
             android:layout_width="120dp"
@@ -216,16 +222,22 @@
             android:layout_alignEnd="@+id/searchView"
             android:layout_alignBottom="@+id/min_budget"
             android:textSize="14sp"
-            android:id="@+id/text_min_budget"/>
+            android:hint="Enter min budget"
+            android:id="@+id/text_min_budget"
+            android:textColor="@color/White"
+            android:textColorHint="@color/Grey" />
 
         <EditText
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/max_budget"
             android:layout_alignEnd="@+id/searchView"
+            android:hint="Enter max budget"
             android:layout_alignBottom="@+id/max_budget"
             android:textSize="14sp"
-            android:id="@+id/text_max_budget"/>
+            android:id="@+id/text_max_budget"
+            android:textColor="@color/White"
+            android:textColorHint="@color/Grey" />
 
         <Button
             android:layout_width="match_parent"
@@ -237,6 +249,5 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:textStyle="bold" />
-
     </RelativeLayout>
 </RelativeLayout>

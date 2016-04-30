@@ -1,9 +1,12 @@
 package com.su.honey.livelarge;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,6 +23,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,13 +35,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     OnClickIListener IListener;
     EventHandler EHandler;
     public Context MyContext;
-    public List<Serializable_PropData> ResultProps;
+    public static List<Serializable_PropData> ResultProps;
 
     public RecyclerViewAdapter(Context context, List<Serializable_PropData> resultprops) {
         this.MyContext = context;
         ResultProps = resultprops;
-        Log.d("Initial",String.valueOf(ResultProps.size()));
-
     }
     public void SetEventHandler(EventHandler MyEventHandler) {
         this.EHandler = MyEventHandler;
@@ -58,6 +60,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String Price = "Price $";
         holder.PropertyPrice.setText(Price.concat(serializablepropdata.getProp_price()));
         holder.PropertyType.setText(serializablepropdata.getProp_type());
+        Bitmap image = Base64toImage(serializablepropdata.getImageURLs());
+        if(image != null)
+            holder.PropertyImage.setImageBitmap(image);
     }
 
     @Override
@@ -83,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(V);
             PropertyType = (TextView) V.findViewById(R.id.card_type);
             PropertyBeds = (TextView) V.findViewById(R.id.card_bed);
-            //PropertyImage = (ImageView) V.findViewById(R.id.card_image);
+            PropertyImage = (ImageView) V.findViewById(R.id.card_image);
             PropertyName = (TextView) V.findViewById(R.id.card_name);
             PropertyPrice = (TextView) V.findViewById(R.id.card_price);
             V.setOnClickListener(new View.OnClickListener() {
@@ -94,5 +99,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
             });
         }
+    }
+
+    protected Bitmap Base64toImage(String img){
+        Bitmap bitmap = null;
+        try{
+            byte [] encodeByte= Base64.decode(img.getBytes(), Base64.DEFAULT);
+            bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            Log.d("img", "su");
+        }
+        catch(Exception e){
+            e.getMessage();
+            Log.d("e: ", e.getMessage());
+        }
+        return bitmap;
     }
 }
