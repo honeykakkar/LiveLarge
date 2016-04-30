@@ -159,9 +159,13 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
                 }
                 else
                 {
+                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+                    Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserEmail("");
+                    LoginItem = MyNavView.getMenu().getItem(1);
                     Logo.setImageResource(R.mipmap.applogo);
                     Usertitle.setText("LiveLarge");
                     LoginItem.setTitle("Login");
@@ -179,8 +183,14 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
             }
             case R.id.SubmitAd:
             {
-                Intent myIntent = new Intent(SearchActivity.this, PostListing.class);
-                SearchActivity.this.startActivity(myIntent);
+                if(QueryRef.getAuth() != null && CurrentUser.getUserName() != null) {
+                    Intent myIntent = new Intent(SearchActivity.this, PostListing.class);
+                    SearchActivity.this.startActivity(myIntent);
+                }
+                else
+                {
+                    Toast.makeText(SearchActivity.this, "Submit ad needs user to be logged in", Toast.LENGTH_LONG).show();
+                }
                 break;
             }
             case R.id.AboutUs:

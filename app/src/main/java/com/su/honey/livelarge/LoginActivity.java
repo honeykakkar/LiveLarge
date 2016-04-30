@@ -84,7 +84,7 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
         MyNavView.setNavigationItemSelectedListener(this);
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
-        if(CurrentUser.getUserName() != null) {
+        if(firebaseRef.getAuth() != null && CurrentUser.getUserName() != null) {
             View HeaderView = (View) MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
@@ -223,6 +223,11 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
                 }
                 else
                 {
+                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+                    Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
+                    Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+                    LoginItem = MyNavView.getMenu().getItem(1);
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserEmail("");
@@ -243,8 +248,14 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
             }
             case R.id.SubmitAd:
             {
-                Intent myIntent = new Intent(LoginActivity.this, PostListing.class);
-                LoginActivity.this.startActivity(myIntent);
+                if(firebaseRef.getAuth() != null && CurrentUser.getUserName() != null) {
+                    Intent myIntent = new Intent(LoginActivity.this, PostListing.class);
+                    LoginActivity.this.startActivity(myIntent);
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this, "Submit ad needs user to be logged in", Toast.LENGTH_LONG).show();
+                }
                 break;
             }
             case R.id.AboutUs:

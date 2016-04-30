@@ -97,6 +97,10 @@ public class AboutUs extends AppCompatActivity implements NavigationView.OnNavig
                 }
                 else
                 {
+                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+                    Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+                    LoginItem = MyNavView.getMenu().getItem(1);
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserEmail("");
@@ -105,6 +109,7 @@ public class AboutUs extends AppCompatActivity implements NavigationView.OnNavig
                     LoginItem.setTitle("Login");
                     Intent myIntent = new Intent(AboutUs.this, LoginActivity.class);
                     AboutUs.this.startActivity(myIntent);
+                    QueryRef.unauth();
                 }
                 break;
             }
@@ -116,12 +121,19 @@ public class AboutUs extends AppCompatActivity implements NavigationView.OnNavig
             }
             case R.id.SubmitAd:
             {
-                Intent myIntent = new Intent(AboutUs.this, PostListing.class);
-                AboutUs.this.startActivity(myIntent);
+                if(QueryRef.getAuth() != null && CurrentUser.getUserName() != null) {
+                    Intent myIntent = new Intent(AboutUs.this, PostListing.class);
+                    AboutUs.this.startActivity(myIntent);
+                }
+                else
+                {
+                    Toast.makeText(AboutUs.this, "Submit ad needs user to be logged in", Toast.LENGTH_LONG).show();
+                }
                 break;
             }
             case R.id.AboutUs:
             {
+
                 Intent myIntent = new Intent(AboutUs.this, AboutUs.class);
                 AboutUs.this.startActivity(myIntent);
                 break;

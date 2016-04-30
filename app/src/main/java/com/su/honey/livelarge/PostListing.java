@@ -66,8 +66,8 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_listing);
         Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.upload);
-        int nh = (int) (bitmapImage.getHeight() * (1440.0 / bitmapImage.getWidth()));
-        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1440, nh, true);
+        int nh = (int) (bitmapImage.getHeight() * (1080.0 / bitmapImage.getWidth()));
+        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1080, nh, true);
         ImageView HomeImage = (ImageView)findViewById(R.id.upload_image);
         HomeImage.setImageBitmap(scaled);
         HomeImage.setAlpha(0.6f);
@@ -276,6 +276,10 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
                 }
                 else
                 {
+                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+                    Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+                    LoginItem = MyNavView.getMenu().getItem(1);
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserEmail("");

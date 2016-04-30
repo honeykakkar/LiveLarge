@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     {
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.navigation_drawer);
         Toast.makeText(MainActivity.this, "Welcome Page", Toast.LENGTH_SHORT).show();
         MyToolBar = (Toolbar)findViewById(R.id.nav_toolbar);
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MyNavView.setNavigationItemSelectedListener(this);
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
-        if(QueryRef.getAuth() != null) {
+        if(QueryRef.getAuth() != null && CurrentUser.getUserName() != null) {
             View HeaderView = (View) MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             case R.id.Login:
             {
-                if(QueryRef.getAuth() == null) {
+                if(QueryRef.getAuth() == null && CurrentUser.getUserName() == null) {
                     Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
                     MainActivity.this.startActivity(myIntent);
                 }
@@ -109,11 +108,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserImageURL("");
                     CurrentUser.setUserEmail("");
+                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+                    Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
                     Logo.setImageResource(R.mipmap.applogo);
                     Usertitle.setText("LiveLarge");
+                    LoginItem = MyNavView.getMenu().getItem(1);
                     LoginItem.setTitle("Login");
                     Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
                     MainActivity.this.startActivity(myIntent);
+                    QueryRef.unauth();
                 }
                 break;
             }
@@ -125,8 +129,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             case R.id.SubmitAd:
             {
-                Intent myIntent = new Intent(MainActivity.this, PostListing.class);
-                MainActivity.this.startActivity(myIntent);
+
+                if(QueryRef.getAuth() != null && CurrentUser.getUserName() != null) {
+                    Intent myIntent = new Intent(MainActivity.this, PostListing.class);
+                    MainActivity.this.startActivity(myIntent);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Submit ad needs user to be logged in", Toast.LENGTH_LONG).show();
+                }
                 break;
             }
             case R.id.AboutUs:
