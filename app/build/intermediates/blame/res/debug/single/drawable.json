@@ -8,8 +8,16 @@
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_ratingbar_full_material.xml"
     },
     {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_settings_light.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_settings_light.xml"
+    },
+    {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu.png",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\menu.png"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\upload1.jpg",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\upload1.jpg"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
@@ -36,8 +44,24 @@
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\help.png"
     },
     {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\upload.jpg",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\upload.jpg"
+    },
+    {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_pause_light.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_pause_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_mono_dark.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_mono_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_connecting_mono_dark.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_connecting_mono_dark.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
@@ -56,12 +80,20 @@
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\drawable\\design_fab_background.xml"
     },
     {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cam.jpg",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\cam.jpg"
+    },
+    {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\homepage.jpg",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\homepage.jpg"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\search.png",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\uploadimages.png",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\uploadimages.png"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\messenger_button_white_bg_round.xml",
@@ -74,6 +106,18 @@
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\gall.png",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\gall.png"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_play_dark.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_play_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_mono_light.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_mono_light.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
@@ -96,16 +140,28 @@
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\xcardview_image.jpg",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\xcardview_image.jpg"
+    },
+    {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
-        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
-        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\details.jpg",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\details.jpg"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_pause_dark.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_pause_dark.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_dark.xml",
@@ -122,6 +178,10 @@
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\home.png",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\home.png"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_play_light.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_play_light.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
@@ -150,6 +210,10 @@
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_connecting_mono_light.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_connecting_mono_light.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\aboutmeface.png",
@@ -200,6 +264,10 @@
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_connecting.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast\\8.3.0\\res\\drawable\\cast_ic_notification_connecting.xml"
+    },
+    {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_auth_dialog_header_background.xml",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.11.0\\res\\drawable\\com_facebook_auth_dialog_header_background.xml"
     },
@@ -234,6 +302,10 @@
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\task_icon.png",
         "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\src\\main\\res\\drawable\\task_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_settings_dark.xml",
+        "source": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_settings_dark.xml"
     },
     {
         "merged": "C:\\Users\\honey\\Desktop\\LiveLarge\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",

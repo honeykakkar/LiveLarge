@@ -23,29 +23,18 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     NavigationView MyNavView;
     DrawerLayout MyDrawLayout;
     Toolbar MyToolBar;
-    Firebase Queryref;
-    String A;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        Queryref = new Firebase("https://livelarge.firebaseio.com/Listings");
-        Queryref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String A = "";
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
@@ -75,17 +64,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         HomeImage.setImageBitmap(scaled);
     }
 
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString, Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
@@ -107,6 +85,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.Search:
             {
                 Intent myIntent = new Intent(MainActivity.this, SearchActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.SubmitAd:
+            {
+                Intent myIntent = new Intent(MainActivity.this, PostListing.class);
                 MainActivity.this.startActivity(myIntent);
                 break;
             }

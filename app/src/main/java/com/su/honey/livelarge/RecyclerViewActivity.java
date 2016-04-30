@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -19,6 +20,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
     ActionBar MyActionBar;
     Toolbar MyToolBar;
     List<Serializable_PropData> Results;
+    Spinner States;
+    Spinner Cities;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,9 +35,16 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
         MyActionBar = getSupportActionBar();
         if(MyActionBar!=null)
             MyActionBar.setDisplayHomeAsUpEnabled(true);
-        Intent Search = getIntent();
+        Intent PrevActivity = getIntent();
+        States = (Spinner)findViewById(R.id.state_spinner);
+        Cities = (Spinner)findViewById(R.id.city_spinner);
+        if(States!=null)
+            States.setSelection(getIntent().getIntExtra("state",0));
+        if(Cities!=null)
+            Cities.setSelection(getIntent().getIntExtra("city",0));
         if( getIntent().getStringExtra("from").equalsIgnoreCase("SearchActivity"))
             Results = (List<Serializable_PropData>) getIntent().getSerializableExtra("resultobject");
+
         if (savedInstanceState != null)
         {
             fragment = (RecyclerView_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
@@ -59,7 +69,9 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
 
     @Override
     public void GetPropDetails(Serializable_PropData SP) {
-        // Enter code here to go to detail page if wanna start an activity or use fragment
+        Intent GetDetails = new Intent(RecyclerViewActivity.this, ListingDetails.class);
+        GetDetails.putExtra("Prop_Data", (Serializable) SP);
+        GetDetails.putExtra("from", "RecyclerViewActivity");
+        RecyclerViewActivity.this.startActivity(GetDetails);
     }
-
 }

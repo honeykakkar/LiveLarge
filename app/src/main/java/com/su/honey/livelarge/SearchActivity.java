@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -17,8 +18,9 @@ public class SearchActivity extends AppCompatActivity implements OnClickIListene
 
     ActionBar MyActionBar;
     Toolbar MyToolBar;
+    Spinner States;
+    Spinner Cities;
     List<Serializable_PropData> ResultProps = new ArrayList<Serializable_PropData>();;
-    static Firebase QueryRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,6 @@ public class SearchActivity extends AppCompatActivity implements OnClickIListene
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-        QueryRef = new Firebase("https://livelarge.firebasListingseio.com/");
         MyToolBar = (Toolbar)findViewById(R.id.action_toolbar);
         setSupportActionBar(MyToolBar);
         MyActionBar = getSupportActionBar();
@@ -35,11 +36,12 @@ public class SearchActivity extends AppCompatActivity implements OnClickIListene
         MyActionBar.setDisplayShowTitleEnabled(false);}
         Toast.makeText(SearchActivity.this, "Search Page", Toast.LENGTH_SHORT).show();
         Search_Fragment searchFragment;
+        States = (Spinner)findViewById(R.id.state_spinner);
+        States.setSelection(34, true);
         if (savedInstanceState != null)
             searchFragment = (Search_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
         else
             SearchActivity.this.FragmentSelected(0);
-
     }
 
     @Override
@@ -76,8 +78,16 @@ public class SearchActivity extends AppCompatActivity implements OnClickIListene
             if(SearchParameters.getMaxBudget() !=0
                     && Integer.parseInt(Current.getProp_area()) > SearchParameters.getMaxBudget())
                 ResultProps.remove(i);
+            if(SearchParameters.getLocality()!= "" && !SearchParameters.getLocality().contains(Current.getProp_address()))
+                ResultProps.remove(i);
         }
         Intent Results = new Intent(SearchActivity.this, RecyclerViewActivity.class);
+        States = (Spinner)findViewById(R.id.state_spinner);
+        Cities = (Spinner)findViewById(R.id.city_spinner);
+        if(States!=null)
+            Results.putExtra("state", States.getSelectedItemPosition());
+        if(Cities!=null)
+            Results.putExtra("city", Cities.getSelectedItemPosition());
         Results.putExtra("resultobject", (Serializable) ResultProps);
         Results.putExtra("from", "SearchActivity");
         SearchActivity.this.startActivity(Results);

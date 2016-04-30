@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -32,8 +34,6 @@ import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
  */
 public class RecyclerView_Fragment extends android.support.v4.app.Fragment implements View.OnClickListener
 {
-    //Toolbar Top;
-    static Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
     public RecyclerView_Fragment(){}
     private static final String SECTION = "SECTION";
     static int ID;
@@ -76,6 +76,7 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         {
             throw new ClassCastException("OOPS!!");
         }
+
         MyRCLManager = new LinearLayoutManager(getActivity());
         MyRCView.setLayoutManager(MyRCLManager);
         MyRCAdapter = new RecyclerViewAdapter(getActivity(), ResultProps);
@@ -83,12 +84,26 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         MyRCAdapter.SetEventHandler(new EventHandler() {
             @Override
             public void GetDetails(Serializable_PropData SP) {
-                // Write code to go to details page
+                IReference.GetPropDetails(SP);
             }
         });
         ItemAnimation();
         AdapterAnimation();
         return RootView;
+    }
+
+
+    private int getIndex(Spinner spinner, String myString)
+    {
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
     public void ItemAnimation()

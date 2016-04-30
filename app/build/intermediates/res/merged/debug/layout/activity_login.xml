@@ -8,16 +8,17 @@
         android:id="@+id/login_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:minHeight="?attr/actionBarSize"/>
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/Red"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Account"
+        android:text="LiveLarge"
         android:id="@+id/createAccount"
         android:textSize="20dp"
         android:layout_below="@+id/login_toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="100dp"/>
 
 
     <EditText
@@ -62,7 +63,12 @@
         android:id="@+id/button"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/edit_text_password"
+        android:layout_marginTop="50dp"
+        android:background="@color/Black"
+        android:textColor="@color/White"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -83,7 +89,19 @@
         android:id="@+id/login"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/loginTV"/>
+        android:layout_below="@+id/loginTV"
+        android:textStyle="bold"
+        android:textColor="@color/White"
+        android:background="@color/Black" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/login_toolbar"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/applogo"
+        android:layout_marginTop="20dp"/>
 
 
 </RelativeLayout>

@@ -160,6 +160,7 @@ public class Search_Fragment extends android.support.v4.app.Fragment
             }
             default:break;
         }
+
         new GetData().execute();
         return RootView;
     }
