@@ -4,11 +4,21 @@ package com.su.honey.livelarge;
  * Created by honey on 4/17/2016.
  */
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -17,15 +27,28 @@ import com.firebase.ui.auth.core.AuthProviderType;
 import com.firebase.ui.auth.core.FirebaseLoginBaseActivity;
 import com.firebase.ui.auth.core.FirebaseLoginError;
 import com.facebook.FacebookSdk;
+import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
-public class LoginActivity extends FirebaseLoginBaseActivity{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class LoginActivity extends FirebaseLoginBaseActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Firebase firebaseRef;
     EditText userNameET;
     EditText passwordET;
-    String mName;
+    ActionBar MyActionBar;
+    Toolbar MyToolBar;
+    Spinner States;
+    Spinner Cities;
+    NavigationView MyNavView;
+    DrawerLayout MyDrawLayout;
+    static CircleImageView Logo;
+    static TextView Usertitle;
+    static MenuItem LoginItem;
+    String mName = "";
+    String PicUrl = "";
 
     /* String Constants */
     private static final String FIREBASEREF = "https://livelarge.firebaseio.com/";
@@ -52,6 +75,37 @@ public class LoginActivity extends FirebaseLoginBaseActivity{
                 LoginActivity.this.showFirebaseLoginPrompt();
             }
         });
+        MyToolBar = (Toolbar)findViewById(R.id.login_toolbar);
+        setSupportActionBar(MyToolBar);
+        MyActionBar = getSupportActionBar();
+        if(MyActionBar!=null)
+            MyActionBar.setDisplayHomeAsUpEnabled(true);
+        MyNavView = (NavigationView)findViewById(R.id.NavigationView);
+        MyNavView.setNavigationItemSelectedListener(this);
+        MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
+
+        if(CurrentUser.getUserName() != null) {
+            View HeaderView = (View) MyNavView.getHeaderView(0);
+            CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+            Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
+            Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+            Usertitle.setText(CurrentUser.getUserName());
+            LoginItem = MyNavView.getMenu().getItem(1);
+            LoginItem.setTitle("Logout");
+        }
+        ActionBarDrawerToggle ABDT = new ActionBarDrawerToggle(this, MyDrawLayout,MyToolBar,R.string.open_drawer,R.string.close_drawer){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        MyDrawLayout.setDrawerListener(ABDT);
+        ABDT.syncState();
         Button createButton = (Button) findViewById(R.id.button);
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,12 +145,16 @@ public class LoginActivity extends FirebaseLoginBaseActivity{
             case "password":
                 mName = (String) authData.getProviderData().get("email");
                 break;
-            default:
+            default: {
                 mName = (String) authData.getProviderData().get("displayName");
                 break;
+            }
         }
         Toast.makeText(getApplicationContext(), LOGIN_SUCCESS, Toast.LENGTH_SHORT).show();
         Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+        CurrentUser.setUserName(mName);
+        PicUrl = (String) authData.getProviderData().get("profileImageURL");
+        CurrentUser.setUserImageURL(PicUrl);
         myIntent.putExtra("from", "LoginActivity");
         LoginActivity.this.startActivity(myIntent);
     }
@@ -143,5 +201,61 @@ public class LoginActivity extends FirebaseLoginBaseActivity{
                         snackbar.show();
                     }
                 });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
+        int ID = item.getItemId();
+        switch (ID)
+        {
+            case R.id.Home:
+            {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                LoginActivity.this.startActivity(intent);
+                break;
+            }
+            case R.id.Login:
+            {
+                if(firebaseRef.getAuth() == null) {
+                    Intent myIntent = new Intent(LoginActivity.this, LoginActivity.class);
+                    LoginActivity.this.startActivity(myIntent);
+                }
+                else
+                {
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserEmail("");
+                    Logo.setImageResource(R.mipmap.applogo);
+                    Usertitle.setText("LiveLarge");
+                    LoginItem.setTitle("Login");
+                    firebaseRef.unauth();
+                    Intent myIntent = new Intent(LoginActivity.this, LoginActivity.class);
+                    LoginActivity.this.startActivity(myIntent);
+                }
+                break;
+            }
+            case R.id.Search:
+            {
+                Intent myIntent = new Intent(LoginActivity.this, SearchActivity.class);
+                LoginActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.SubmitAd:
+            {
+                Intent myIntent = new Intent(LoginActivity.this, PostListing.class);
+                LoginActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.AboutUs:
+            {
+                Intent myIntent = new Intent(LoginActivity.this, AboutUs.class);
+                LoginActivity.this.startActivity(myIntent);
+                break;
+            }
+            default:break;
+        }
+        MyDrawLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

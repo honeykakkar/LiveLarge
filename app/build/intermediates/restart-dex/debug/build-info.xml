@@ -1,42 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86,armeabi-v7a,armeabi"
+    abi="x86"
     api-level="22"
-    density="xxhdpi"
+    density="xxxhdpi"
     format="7"
-    timestamp="118597930397657" >
+    timestamp="145746042510995" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="12361" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="784" />
     <task
         name="verifier"
-        duration="0" />
+        duration="272" />
 
     <artifact
-        location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\res\resources-debug.ap_"
-        type="RESOURCES" />
+        location="C:\Users\honey\Desktop\LiveLarge\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="117408822269304" >
+    <build timestamp="145746042510995" >
         <artifact
             location="C:\Users\honey\Desktop\LiveLarge\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build timestamp="118491168363390" >
-        <artifact
-            location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
-            type="DEX" />
-    </build>
-    <build timestamp="118597930397657" >
-        <artifact
-            location="C:\Users\honey\Desktop\LiveLarge\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
     </build>
 
 </instant-run>

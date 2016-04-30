@@ -25,7 +25,7 @@ public class ListingDetails extends AppCompatActivity implements OnClickIListene
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout collapsingToolbar= (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(propData.getProp_city()+"_"+propData.getProp_address());
+        collapsingToolbar.setTitle(propData.getProp_address());
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Details"));

@@ -75,8 +75,8 @@ public class Search_Fragment extends android.support.v4.app.Fragment
                     throw new ClassCastException("OOPS!!");
                 }
                 Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.search_background);
-                int nh = (int) (bitmapImage.getHeight() * (1080.0 / bitmapImage.getWidth()));
-                Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1080, nh, true);
+                int nh = (int) (bitmapImage.getHeight() * (1440.0 / bitmapImage.getWidth()));
+                Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1440, nh, true);
                 ImageView HomeImage = (ImageView) RootView.findViewById(R.id.search_image);
                 HomeImage.setImageBitmap(scaled);
                 HomeImage.setAlpha(0.6f);

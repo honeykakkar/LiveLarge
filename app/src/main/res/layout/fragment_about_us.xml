@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.su.honey.livelarge.AboutUsFragment">
+
+
+    <ImageView
+        android:id="@+id/aboutus_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo2"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/aboutus_text"
+        android:layout_below="@id/aboutus_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="Live Large app helps you search property for rent or sale. Post your requirements to rent apartment or properties for sale in a single click and making available to other property buyers and sellers. Search and share your chosen house with friends and family."
+        android:layout_gravity="center"/>
+
+</RelativeLayout>

@@ -1,27 +1,44 @@
 package com.su.honey.livelarge;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by honey on 2/13/2016.
  */
-public class RecyclerViewActivity extends AppCompatActivity implements OnClickIListener
+public class RecyclerViewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickIListener
 {
     ActionBar MyActionBar;
     Toolbar MyToolBar;
     List<Serializable_PropData> Results;
     Spinner States;
     Spinner Cities;
+    NavigationView MyNavView;
+    DrawerLayout MyDrawLayout;
+    Firebase QueryRef;
+    static CircleImageView Logo;
+    static TextView Usertitle;
+    static MenuItem LoginItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,6 +52,33 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
         MyActionBar = getSupportActionBar();
         if(MyActionBar!=null)
             MyActionBar.setDisplayHomeAsUpEnabled(true);
+        QueryRef = new Firebase("https://livelarge.firebaseio.com/");
+        MyNavView = (NavigationView)findViewById(R.id.NavigationView);
+        MyNavView.setNavigationItemSelectedListener(this);
+        MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
+
+        if(QueryRef.getAuth() != null) {
+            View HeaderView = (View) MyNavView.getHeaderView(0);
+            CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+            Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
+            Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+            Usertitle.setText(CurrentUser.getUserName());
+            LoginItem = MyNavView.getMenu().getItem(1);
+            LoginItem.setTitle("Logout");
+        }
+        ActionBarDrawerToggle ABDT = new ActionBarDrawerToggle(this, MyDrawLayout,MyToolBar,R.string.open_drawer,R.string.close_drawer){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        MyDrawLayout.setDrawerListener(ABDT);
+        ABDT.syncState();
         Intent PrevActivity = getIntent();
         States = (Spinner)findViewById(R.id.state_spinner);
         Cities = (Spinner)findViewById(R.id.city_spinner);
@@ -73,5 +117,60 @@ public class RecyclerViewActivity extends AppCompatActivity implements OnClickIL
         GetDetails.putExtra("Prop_Data", (Serializable) SP);
         GetDetails.putExtra("from", "RecyclerViewActivity");
         RecyclerViewActivity.this.startActivity(GetDetails);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
+        int ID = item.getItemId();
+        switch (ID)
+        {
+            case R.id.Home:
+            {
+                Intent intent = new Intent(RecyclerViewActivity.this, MainActivity.class);
+                RecyclerViewActivity.this.startActivity(intent);
+                break;
+            }
+            case R.id.Login:
+            {
+                if(QueryRef.getAuth() == null) {
+                    Intent myIntent = new Intent(RecyclerViewActivity.this, LoginActivity.class);
+                    RecyclerViewActivity.this.startActivity(myIntent);
+                }
+                else
+                {
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserEmail("");
+                    Logo.setImageResource(R.mipmap.applogo);
+                    Usertitle.setText("LiveLarge");
+                    LoginItem.setTitle("Login");
+                    Intent myIntent = new Intent(RecyclerViewActivity.this, LoginActivity.class);
+                    RecyclerViewActivity.this.startActivity(myIntent);
+                }
+                break;
+            }
+            case R.id.Search:
+            {
+                Intent myIntent = new Intent(RecyclerViewActivity.this, SearchActivity.class);
+                RecyclerViewActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.SubmitAd:
+            {
+                Intent myIntent = new Intent(RecyclerViewActivity.this, PostListing.class);
+                RecyclerViewActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.AboutUs:
+            {
+                Intent myIntent = new Intent(RecyclerViewActivity.this, AboutUs.class);
+                RecyclerViewActivity.this.startActivity(myIntent);
+                break;
+            }
+            default:break;
+        }
+        MyDrawLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

@@ -1,30 +1,46 @@
 package com.su.honey.livelarge;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements OnClickIListener{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class SearchActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickIListener{
 
     ActionBar MyActionBar;
     Toolbar MyToolBar;
     Spinner States;
     Spinner Cities;
+    NavigationView MyNavView;
+    DrawerLayout MyDrawLayout;
+    Firebase QueryRef;
+    static CircleImageView Logo;
+    static TextView Usertitle;
+    static MenuItem LoginItem;
     List<Serializable_PropData> ResultProps = new ArrayList<Serializable_PropData>();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        QueryRef = new Firebase("https://livelarge.firebaseio.com/");
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
@@ -32,8 +48,33 @@ public class SearchActivity extends AppCompatActivity implements OnClickIListene
         setSupportActionBar(MyToolBar);
         MyActionBar = getSupportActionBar();
         if(MyActionBar!=null)
-        {MyActionBar.setDisplayHomeAsUpEnabled(true);
-        MyActionBar.setDisplayShowTitleEnabled(false);}
+            MyActionBar.setDisplayHomeAsUpEnabled(true);
+        MyNavView = (NavigationView)findViewById(R.id.NavigationView);
+        MyNavView.setNavigationItemSelectedListener(this);
+        MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
+
+        if(CurrentUser.getUserName() != null) {
+            View HeaderView = (View) MyNavView.getHeaderView(0);
+            CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+            Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
+            Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+            Usertitle.setText(CurrentUser.getUserName());
+            LoginItem = MyNavView.getMenu().getItem(1);
+            LoginItem.setTitle("Logout");
+        }
+        ActionBarDrawerToggle ABDT = new ActionBarDrawerToggle(this, MyDrawLayout,MyToolBar,R.string.open_drawer,R.string.close_drawer){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        MyDrawLayout.setDrawerListener(ABDT);
+        ABDT.syncState();
         Toast.makeText(SearchActivity.this, "Search Page", Toast.LENGTH_SHORT).show();
         Search_Fragment searchFragment;
         States = (Spinner)findViewById(R.id.state_spinner);
@@ -96,5 +137,61 @@ public class SearchActivity extends AppCompatActivity implements OnClickIListene
     @Override
     public void GetPropDetails(Serializable_PropData SP) {
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
+        int ID = item.getItemId();
+        switch (ID)
+        {
+            case R.id.Home:
+            {
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                SearchActivity.this.startActivity(intent);
+                break;
+            }
+            case R.id.Login:
+            {
+                if(QueryRef.getAuth() == null) {
+                    Intent myIntent = new Intent(SearchActivity.this, LoginActivity.class);
+                    SearchActivity.this.startActivity(myIntent);
+                }
+                else
+                {
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserEmail("");
+                    Logo.setImageResource(R.mipmap.applogo);
+                    Usertitle.setText("LiveLarge");
+                    LoginItem.setTitle("Login");
+                    QueryRef.unauth();
+                    Intent myIntent = new Intent(SearchActivity.this, LoginActivity.class);
+                    SearchActivity.this.startActivity(myIntent);
+                }
+                break;
+            }
+            case R.id.Search:
+            {
+                Intent myIntent = new Intent(SearchActivity.this, SearchActivity.class);
+                SearchActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.SubmitAd:
+            {
+                Intent myIntent = new Intent(SearchActivity.this, PostListing.class);
+                SearchActivity.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.AboutUs:
+            {
+                Intent myIntent = new Intent(SearchActivity.this, AboutUs.class);
+                SearchActivity.this.startActivity(myIntent);
+                break;
+            }
+            default:break;
+        }
+        MyDrawLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

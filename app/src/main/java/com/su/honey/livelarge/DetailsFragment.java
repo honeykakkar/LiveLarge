@@ -65,8 +65,6 @@ public class DetailsFragment extends Fragment {
             throw new ClassCastException("OOPS!!");
         }
         rootView = inflater.inflate(R.layout.fragment_details, container, false);
-        imageView = (ImageView) getActivity().findViewById(R.id.backdrop);
-        imageView.setImageBitmap(Base64toImage(propData.getImageURLs()));
         final String _addr = propData.getProp_address();
         final String _city = propData.getProp_city();
         String _state = propData.getProp_state();

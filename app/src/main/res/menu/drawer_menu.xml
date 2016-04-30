@@ -26,12 +26,4 @@
         android:checked="false"
         android:icon="@drawable/aboutmeface"
         android:title="About us"/>
-    <item
-        android:id="@+id/Help"
-        android:checked="false"
-        android:icon="@drawable/help"
-        android:title="Help"/>
-
-
-
 </menu>

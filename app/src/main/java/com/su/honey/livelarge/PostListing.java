@@ -6,9 +6,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,15 +23,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.firebase.client.Firebase;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 
 import javax.xml.transform.URIResolver;
 
-public class PostListing extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
 
+public class PostListing extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    ActionBar MyActionBar;
+    Toolbar MyToolBar;
+    Spinner States;
+    Spinner Cities;
+    NavigationView MyNavView;
+    DrawerLayout MyDrawLayout;
+    Firebase QueryRef;
+    static CircleImageView Logo;
+    static TextView Usertitle;
+    static MenuItem LoginItem;
     public static final int CAM_REQUEST_CODE = 10;
     public static final int GAL_REQUEST_CODE = 20;
     ImageView uploadimagecam, uploadimagegal, images, uploadImage;
@@ -41,14 +62,47 @@ public class PostListing extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        QueryRef = new Firebase("https://livelarge.firebaseio.com/");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_listing);
         Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.upload);
-        int nh = (int) (bitmapImage.getHeight() * (1080.0 / bitmapImage.getWidth()));
-        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1080, nh, true);
+        int nh = (int) (bitmapImage.getHeight() * (1440.0 / bitmapImage.getWidth()));
+        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1440, nh, true);
         ImageView HomeImage = (ImageView)findViewById(R.id.upload_image);
         HomeImage.setImageBitmap(scaled);
         HomeImage.setAlpha(0.6f);
+        MyToolBar = (Toolbar)findViewById(R.id.action_toolbar);
+        setSupportActionBar(MyToolBar);
+        MyActionBar = getSupportActionBar();
+        if(MyActionBar!=null)
+            MyActionBar.setDisplayHomeAsUpEnabled(true);
+        MyNavView = (NavigationView)findViewById(R.id.NavigationView);
+        MyNavView.setNavigationItemSelectedListener(this);
+        MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
+
+        if(CurrentUser.getUserName() != null) {
+            View HeaderView = (View) MyNavView.getHeaderView(0);
+            CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
+            Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
+            Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
+            Usertitle.setText(CurrentUser.getUserName());
+            LoginItem = MyNavView.getMenu().getItem(1);
+            LoginItem.setTitle("Logout");
+        }
+        ActionBarDrawerToggle ABDT = new ActionBarDrawerToggle(this, MyDrawLayout,MyToolBar,R.string.open_drawer,R.string.close_drawer){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        MyDrawLayout.setDrawerListener(ABDT);
+        ABDT.syncState();
+
         uploadImage = (ImageView)findViewById(R.id.uploadimage);
         uploadImage.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -200,5 +254,61 @@ public class PostListing extends AppCompatActivity {
             byte[] byteArray = baos.toByteArray();
             encodedImageString = Base64.encodeToString(byteArray, Base64.DEFAULT);
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
+        int ID = item.getItemId();
+        switch (ID)
+        {
+            case R.id.Home:
+            {
+                Intent intent = new Intent(PostListing.this, MainActivity.class);
+                PostListing.this.startActivity(intent);
+                break;
+            }
+            case R.id.Login:
+            {
+                if(QueryRef.getAuth() == null) {
+                    Intent myIntent = new Intent(PostListing.this, LoginActivity.class);
+                    PostListing.this.startActivity(myIntent);
+                }
+                else
+                {
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserImageURL("");
+                    CurrentUser.setUserEmail("");
+                    Logo.setImageResource(R.mipmap.applogo);
+                    Usertitle.setText("LiveLarge");
+                    LoginItem.setTitle("Login");
+                    QueryRef.unauth();
+                    Intent myIntent = new Intent(PostListing.this, LoginActivity.class);
+                    PostListing.this.startActivity(myIntent);
+                }
+                break;
+            }
+            case R.id.Search:
+            {
+                Intent myIntent = new Intent(PostListing.this, SearchActivity.class);
+                PostListing.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.SubmitAd:
+            {
+                Intent myIntent = new Intent(PostListing.this, PostListing.class);
+                PostListing.this.startActivity(myIntent);
+                break;
+            }
+            case R.id.AboutUs:
+            {
+                Intent myIntent = new Intent(PostListing.this, AboutUs.class);
+                PostListing.this.startActivity(myIntent);
+                break;
+            }
+            default:break;
+        }
+        MyDrawLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

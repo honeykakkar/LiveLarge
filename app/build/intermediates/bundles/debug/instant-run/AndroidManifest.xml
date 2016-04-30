@@ -88,6 +88,10 @@
             android:theme="@style/AppThemeNoAB" >
         </activity>
         <activity
+            android:name="com.su.honey.livelarge.AboutUs"
+            android:theme="@style/AppThemeNoAB" >
+        </activity>
+        <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
             android:excludeFromRecents="true"
             android:exported="false"
