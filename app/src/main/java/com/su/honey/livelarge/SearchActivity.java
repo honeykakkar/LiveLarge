@@ -53,7 +53,7 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
         MyNavView.setNavigationItemSelectedListener(this);
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
-        if(CurrentUser.getUserName() != null) {
+        if(CurrentUser.getUserName() != null && QueryRef.getAuth() != null ) {
             View HeaderView = (View) MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);

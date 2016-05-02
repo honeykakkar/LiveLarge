@@ -25,6 +25,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
@@ -44,6 +45,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
     NavigationView MyNavView;
     DrawerLayout MyDrawLayout;
     Firebase QueryRef;
+    Firebase QueryRefLogin;
     static CircleImageView Logo;
     static TextView Usertitle;
     static MenuItem LoginItem;
@@ -58,11 +60,11 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
     RadioButton rb_buy_rent;
     RadioGroup rg_buy_rent;
     Button uploadButton;
-    public Firebase firebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        QueryRef = new Firebase("https://livelarge.firebaseio.com/");
+        QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
+        QueryRefLogin = new Firebase("https://livelarge.firebaseio.com");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_listing);
         Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.upload);
@@ -80,7 +82,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
         MyNavView.setNavigationItemSelectedListener(this);
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
-        if(CurrentUser.getUserName() != null) {
+        if(CurrentUser.getUserName() != null && QueryRefLogin.getAuth() != null) {
             View HeaderView = (View) MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
@@ -219,7 +221,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
         }
 
         if(flag_city && flag_price && flag_state && flag_street && flag_listtype){
-            firebaseRef.child(city+"_"+street).setValue(Prop_Data);
+            QueryRef.child(city+"_"+street).setValue(Prop_Data);
             Intent i = new Intent(PostListing.this, ListingDetails.class);
             i.putExtra("Prop_Data", Prop_Data);
             startActivity(i);
@@ -270,7 +272,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
             }
             case R.id.Login:
             {
-                if(QueryRef.getAuth() == null) {
+                if(QueryRefLogin.getAuth() == null) {
                     Intent myIntent = new Intent(PostListing.this, LoginActivity.class);
                     PostListing.this.startActivity(myIntent);
                 }
@@ -286,7 +288,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
                     Logo.setImageResource(R.mipmap.applogo);
                     Usertitle.setText("LiveLarge");
                     LoginItem.setTitle("Login");
-                    QueryRef.unauth();
+                    QueryRefLogin.unauth();
                     Intent myIntent = new Intent(PostListing.this, LoginActivity.class);
                     PostListing.this.startActivity(myIntent);
                 }
@@ -300,8 +302,14 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
             }
             case R.id.SubmitAd:
             {
-                Intent myIntent = new Intent(PostListing.this, PostListing.class);
-                PostListing.this.startActivity(myIntent);
+                if(QueryRefLogin.getAuth() != null && CurrentUser.getUserName() != null) {
+                    Intent myIntent = new Intent(PostListing.this, PostListing.class);
+                    PostListing.this.startActivity(myIntent);
+                }
+                else
+                {
+                    Toast.makeText(PostListing.this, "Submit ad needs user to be logged in", Toast.LENGTH_LONG).show();
+                }
                 break;
             }
             case R.id.AboutUs:

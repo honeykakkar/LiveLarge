@@ -61,8 +61,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.PropertyPrice.setText(Price.concat(serializablepropdata.getProp_price()));
         holder.PropertyType.setText(serializablepropdata.getProp_type());
         Bitmap image = Base64toImage(serializablepropdata.getImageURLs());
-        if(image != null)
-            holder.PropertyImage.setImageBitmap(image);
+        //if(image != null)
+          //  holder.PropertyImage.setImageBitmap(image);
     }
 
     @Override

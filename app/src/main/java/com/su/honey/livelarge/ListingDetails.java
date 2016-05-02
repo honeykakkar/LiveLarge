@@ -1,6 +1,7 @@
 package com.su.honey.livelarge;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -26,6 +27,7 @@ public class ListingDetails extends AppCompatActivity implements OnClickIListene
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout collapsingToolbar= (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(propData.getProp_address());
+        collapsingToolbar.setCollapsedTitleTextColor(Color.BLACK);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Details"));
