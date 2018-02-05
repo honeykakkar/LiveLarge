@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -31,35 +32,60 @@ import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
-
-import javax.xml.transform.URIResolver;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostListing extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    ActionBar MyActionBar;
-    Toolbar MyToolBar;
+    private ActionBar MyActionBar;
+    private Toolbar MyToolBar;
     Spinner States;
     Spinner Cities;
-    NavigationView MyNavView;
-    DrawerLayout MyDrawLayout;
-    Firebase QueryRef;
-    Firebase QueryRefLogin;
+    private NavigationView MyNavView;
+    private DrawerLayout MyDrawLayout;
+    private Firebase QueryRef;
+    private Firebase QueryRefLogin;
     static CircleImageView Logo;
-    static TextView Usertitle;
-    static MenuItem LoginItem;
-    public static final int CAM_REQUEST_CODE = 10;
-    public static final int GAL_REQUEST_CODE = 20;
-    ImageView uploadimagecam, uploadimagegal, images, uploadImage;
-    Bitmap camImage;
-    Uri galImage;
-    String encodedImageString;
-    String street, apt, city, state, proptype, area, bedrooms, desc, amenities, furn, avail, price, buy_rent;
-    EditText et_street, et_apt, et_city, et_state, et_proptype, et_area, et_bedrooms, et_desc, et_amenities, et_furn, et_avail, et_price;
-    RadioButton rb_buy_rent;
-    RadioGroup rg_buy_rent;
-    Button uploadButton;
+    private static TextView Usertitle;
+    private static MenuItem LoginItem;
+    private static final int CAM_REQUEST_CODE = 10;
+    private static final int GAL_REQUEST_CODE = 20;
+    ImageView uploadimagecam;
+    ImageView uploadimagegal;
+    private ImageView images;
+    private ImageView uploadImage;
+    private Bitmap camImage;
+    private Uri galImage;
+    private String encodedImageString;
+    private String street;
+    private String apt;
+    private String city;
+    private String state;
+    private String proptype;
+    private String area;
+    private String bedrooms;
+    private String desc;
+    private String amenities;
+    private String furn;
+    private String avail;
+    private String price;
+    private String buy_rent;
+    private EditText et_street;
+    private EditText et_apt;
+    private EditText et_city;
+    private EditText et_state;
+    private EditText et_proptype;
+    private EditText et_area;
+    private EditText et_bedrooms;
+    private EditText et_desc;
+    private EditText et_amenities;
+    private EditText et_furn;
+    private EditText et_avail;
+    private EditText et_price;
+    private RadioButton rb_buy_rent;
+    private RadioGroup rg_buy_rent;
+    private Button uploadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +109,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
         if(CurrentUser.getUserName() != null && QueryRefLogin.getAuth() != null) {
-            View HeaderView = (View) MyNavView.getHeaderView(0);
+            View HeaderView = MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
             Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
@@ -195,27 +221,27 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
         Prop_Data.setProp_AvailDate(avail);
         Prop_Data.setList_type(buy_rent);
         Prop_Data.setImageURLs(encodedImageString);
-        if(street != ""){
+        if(!Objects.equals(street, "")){
             String s = "";
-            if (apt != "")
+            if (!Objects.equals(apt, ""))
             {
                 s = ", Apt #"+apt;
             }
-            else if (apt == ""){
+            else if (Objects.equals(apt, "")){
                 s = "";
             }
             Prop_Data.setProp_address(street+s);
             flag_street = true;
         }
-        if(city != ""){
+        if(!Objects.equals(city, "")){
             Prop_Data.setProp_city(city);
             flag_city = true;
         }
-        if(state != ""){
+        if(!Objects.equals(state, "")){
             Prop_Data.setProp_state(state);
             flag_state = true;
         }
-        if(price != ""){
+        if(!Objects.equals(price, "")){
             Prop_Data.setProp_price(price);
             flag_price = true;
         }
@@ -259,7 +285,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
         int ID = item.getItemId();
         switch (ID)
@@ -278,7 +304,7 @@ public class PostListing extends AppCompatActivity implements NavigationView.OnN
                 }
                 else
                 {
-                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    View HeaderView = MyNavView.getHeaderView(0);
                     CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
                     Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
                     LoginItem = MyNavView.getMenu().getItem(1);

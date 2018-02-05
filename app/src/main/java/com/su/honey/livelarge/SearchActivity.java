@@ -1,6 +1,7 @@
 package com.su.honey.livelarge;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,22 +22,20 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickIListener{
 
-    ActionBar MyActionBar;
-    Toolbar MyToolBar;
-    Spinner States;
-    Spinner Cities;
-    NavigationView MyNavView;
-    DrawerLayout MyDrawLayout;
-    Firebase QueryRef;
+    private Spinner States;
+    private NavigationView MyNavView;
+    private DrawerLayout MyDrawLayout;
+    private Firebase QueryRef;
     static CircleImageView Logo;
-    static TextView Usertitle;
-    static MenuItem LoginItem;
-    List<Serializable_PropData> ResultProps = new ArrayList<Serializable_PropData>();;
+    private static TextView Usertitle;
+    private static MenuItem LoginItem;
+    private final List<Serializable_PropData> ResultProps = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +43,17 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
         setTheme(R.style.AppThemeNoAB);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-        MyToolBar = (Toolbar)findViewById(R.id.action_toolbar);
-        setSupportActionBar(MyToolBar);
-        MyActionBar = getSupportActionBar();
-        if(MyActionBar!=null)
-            MyActionBar.setDisplayHomeAsUpEnabled(true);
+        Toolbar myToolBar = (Toolbar) findViewById(R.id.action_toolbar);
+        setSupportActionBar(myToolBar);
+        ActionBar myActionBar = getSupportActionBar();
+        if(myActionBar !=null)
+            myActionBar.setDisplayHomeAsUpEnabled(true);
         MyNavView = (NavigationView)findViewById(R.id.NavigationView);
         MyNavView.setNavigationItemSelectedListener(this);
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
         if(CurrentUser.getUserName() != null && QueryRef.getAuth() != null ) {
-            View HeaderView = (View) MyNavView.getHeaderView(0);
+            View HeaderView = MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
             Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
@@ -62,7 +61,7 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
             LoginItem = MyNavView.getMenu().getItem(1);
             LoginItem.setTitle("Logout");
         }
-        ActionBarDrawerToggle ABDT = new ActionBarDrawerToggle(this, MyDrawLayout,MyToolBar,R.string.open_drawer,R.string.close_drawer){
+        ActionBarDrawerToggle ABDT = new ActionBarDrawerToggle(this, MyDrawLayout, myToolBar,R.string.open_drawer,R.string.close_drawer){
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -82,13 +81,13 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
         if (savedInstanceState != null)
             searchFragment = (Search_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
         else
-            SearchActivity.this.FragmentSelected(0);
+            SearchActivity.this.FragmentSelected();
     }
 
     @Override
-    public void FragmentSelected(int Section) {
+    public void FragmentSelected() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.Coverpage, Search_Fragment.FragmentFactory(Section))
+                .replace(R.id.Coverpage, Search_Fragment.FragmentFactory(0))
                 .commit();
     }
 
@@ -119,16 +118,16 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
             if(SearchParameters.getMaxBudget() !=0
                     && Integer.parseInt(Current.getProp_area()) > SearchParameters.getMaxBudget())
                 ResultProps.remove(i);
-            if(SearchParameters.getLocality()!= "" && !SearchParameters.getLocality().contains(Current.getProp_address()))
+            if(!Objects.equals(SearchParameters.getLocality(), "") && !SearchParameters.getLocality().contains(Current.getProp_address()))
                 ResultProps.remove(i);
         }
         Intent Results = new Intent(SearchActivity.this, RecyclerViewActivity.class);
         States = (Spinner)findViewById(R.id.state_spinner);
-        Cities = (Spinner)findViewById(R.id.city_spinner);
+        Spinner cities = (Spinner) findViewById(R.id.city_spinner);
         if(States!=null)
             Results.putExtra("state", States.getSelectedItemPosition());
-        if(Cities!=null)
-            Results.putExtra("city", Cities.getSelectedItemPosition());
+        if(cities !=null)
+            Results.putExtra("city", cities.getSelectedItemPosition());
         Results.putExtra("resultobject", (Serializable) ResultProps);
         Results.putExtra("from", "SearchActivity");
         SearchActivity.this.startActivity(Results);
@@ -140,7 +139,7 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
         int ID = item.getItemId();
         switch (ID)
@@ -159,7 +158,7 @@ public class SearchActivity extends AppCompatActivity implements NavigationView.
                 }
                 else
                 {
-                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    View HeaderView = MyNavView.getHeaderView(0);
                     CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
                     Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
                     CurrentUser.setUserImageURL("");

@@ -1,7 +1,6 @@
 package com.su.honey.livelarge;
 
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -22,9 +21,20 @@ import android.widget.TextView;
 public class DetailsFragment extends Fragment {
 
     private static final String ARG_PROPDATA = "propdata";
-    protected OnClickIListener IReference;
+    private OnClickIListener IReference;
     private Serializable_PropData propData;
-    TextView addr, city, state, proptype, area, bedrooms, desc, amenities, furn, avail, price, listingtype;
+    private TextView addr;
+    private TextView city;
+    private TextView state;
+    private TextView proptype;
+    private TextView area;
+    private TextView bedrooms;
+    private TextView desc;
+    private TextView amenities;
+    private TextView furn;
+    private TextView avail;
+    private TextView price;
+    private TextView listingtype;
     ImageView imageView;
 
     public DetailsFragment() {

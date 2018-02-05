@@ -86,4 +86,19 @@
     <string name="google_maps_key" templateMergeStartegy = "preserve" translatable="false">
         AIzaSyDA1BhmxINsoybpFWkvv4U851eOaQG_9e4
     </string>
+    <string name="searchimage">searchImage</string>
+    <string name="rent">RENT</string>
+    <string name="enter_min_area">Enter min area</string>
+    <string name="buy">BUY</string>
+    <string name="property_type">PROPERTY TYPE</string>
+    <string name="bedrooms">BEDROOMS</string>
+    <string name="minimum_area">MINIMUM AREA</string>
+    <string name="maximum_area">MAXIMUM AREA</string>
+    <string name="minimum_budget">MINIMUM BUDGET</string>
+    <string name="maximum_budget">MAXIMUM BUDGET</string>
+    <string name="furnishing">FURNISHING</string>
+    <string name="search">SEARCH</string>
+    <string name="enter_max_budget">Enter max budget</string>
+    <string name="enter_min_budget">Enter min budget</string>
+    <string name="enter_max_area">Enter max area</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.su.honey.livelarge;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -23,15 +22,16 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Created by honey on 4/18/2016.
  */
 public class Search_Fragment extends android.support.v4.app.Fragment
 {
-    protected OnClickIListener IReference;
-    SearchParams SearchParameters;
-    static Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
+    private OnClickIListener IReference;
+    private SearchParams SearchParameters;
+    private static final Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
     public Search_Fragment()
     {
 
@@ -55,7 +55,7 @@ public class Search_Fragment extends android.support.v4.app.Fragment
         setRetainInstance(true);
     }
 
-    View RootView = null;
+    private View RootView = null;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -114,25 +114,25 @@ public class Search_Fragment extends android.support.v4.app.Fragment
                                 Bedrooms = 5;
                         }
                         if(MinAreaText!=null) {
-                            if(MinAreaText.getText().toString() == "" || !isInteger(MinAreaText.getText().toString()))
+                            if(Objects.equals(MinAreaText.getText().toString(), "") || !isInteger(MinAreaText.getText().toString()))
                                 MinArea = 0;
                             else
                                 MinArea = Integer.parseInt(MinAreaText.getText().toString());
                         }
                         if(MaxAreaText!=null){
-                            if(MaxAreaText.getText().toString() == "" || !isInteger(MaxAreaText.getText().toString()))
+                            if(Objects.equals(MaxAreaText.getText().toString(), "") || !isInteger(MaxAreaText.getText().toString()))
                                 MaxArea = 0;
                             else
                                 MaxArea = Integer.parseInt(MaxAreaText.getText().toString());
                         }
                         if(MinBudText!=null){
-                            if(MinBudText.getText().toString() == "" || !isInteger(MinBudText.getText().toString()))
+                            if(Objects.equals(MinBudText.getText().toString(), "") || !isInteger(MinBudText.getText().toString()))
                                 MinBudget = 0;
                             else
                             MinBudget = Integer.parseInt(MinBudText.getText().toString());
                         }
                         if(MaxBudText!=null){
-                            if(MaxBudText.getText().toString() == "" || !isInteger(MaxBudText.getText().toString()))
+                            if(Objects.equals(MaxBudText.getText().toString(), "") || !isInteger(MaxBudText.getText().toString()))
                                 MaxBudget = 0;
                             else
                             MaxBudget = Integer.parseInt(MaxBudText.getText().toString());
@@ -195,18 +195,18 @@ public class Search_Fragment extends android.support.v4.app.Fragment
         }
     }
 
-    public static boolean isInteger(String s) {
-        return isInteger(s,10);
+    private static boolean isInteger(String s) {
+        return isInteger(s, 10);
     }
 
-    public static boolean isInteger(String s, int radix) {
+    private static boolean isInteger(String s, int radix) {
         if(s.isEmpty()) return false;
         for(int i = 0; i < s.length(); i++) {
             if(i == 0 && s.charAt(i) == '-') {
                 if(s.length() == 1) return false;
                 else continue;
             }
-            if(Character.digit(s.charAt(i),radix) < 0) return false;
+            if(Character.digit(s.charAt(i), radix) < 0) return false;
         }
         return true;
     }

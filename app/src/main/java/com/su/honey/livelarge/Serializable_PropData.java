@@ -3,30 +3,29 @@ package com.su.honey.livelarge;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by honey on 4/18/2016.
  */
 
 @JsonIgnoreProperties({"selection"})
-public class Serializable_PropData implements Serializable
+class Serializable_PropData implements Serializable
 {
-    String prop_name;
-    String list_type;
-    String prop_type;
-    String prop_price;
-    String prop_bed;
-    String prop_AvailDate;
-    String prop_city;
-    String prop_state;
-    String prop_description;
-    String prop_furnished;
-    String imageURLs;
-    String prop_owner;
-    String prop_address;
-    String prop_amenities;
-    String prop_area;
+    private String prop_name;
+    private String list_type;
+    private String prop_type;
+    private String prop_price;
+    private String prop_bed;
+    private String prop_AvailDate;
+    private String prop_city;
+    private String prop_state;
+    private String prop_description;
+    private String prop_furnished;
+    private String imageURLs;
+    private String prop_owner;
+    private String prop_address;
+    private String prop_amenities;
+    private String prop_area;
 
     public String getProp_area() {
         return prop_area;

@@ -47,7 +47,7 @@ public class AnimationFactory {
 	 * @author Ephraim A. Tekle
 	 *
 	 */
-	public static enum FlipDirection {
+	public enum FlipDirection {
 		LEFT_RIGHT, 
 		RIGHT_LEFT;
 		
@@ -91,22 +91,19 @@ public class AnimationFactory {
 				return null;
 			}
 		}
-	};
-	 
-	
-	/**
+	}
+
+
+    /**
 	 * Create a pair of {@link FlipAnimation} that can be used to flip 3D transition from {@code fromView} to {@code toView}. A typical use case is with {@link ViewAnimator} as an out and in transition.
 	 * 
 	 * NOTE: Avoid using this method. Instead, use {@link #flipTransition}.
 	 *  
 	 * @param fromView the view transition away from
-	 * @param toView the view transition to
 	 * @param dir the flip direction
-	 * @param duration the transition duration in milliseconds
-	 * @param interpolator the interpolator to use (pass {@code null} to use the {@link AccelerateInterpolator} interpolator) 
 	 * @return
 	 */
-	public static Animation[] flipAnimation(final View fromView, final View toView, FlipDirection dir, long duration, Interpolator interpolator) {
+	private static Animation[] flipAnimation(final View fromView, FlipDirection dir) {
 		Animation[] result = new Animation[2];
 		float centerX;
 		float centerY;
@@ -114,10 +111,10 @@ public class AnimationFactory {
 		centerX = fromView.getWidth() / 2.0f;
 		centerY = fromView.getHeight() / 2.0f; 
 		
-		Animation outFlip= new FlipAnimation(dir.getStartDegreeForFirstView(), dir.getEndDegreeForFirstView(), centerX, centerY, FlipAnimation.SCALE_DEFAULT, FlipAnimation.ScaleUpDownEnum.SCALE_DOWN);
-		outFlip.setDuration(duration);
+		Animation outFlip= new FlipAnimation(dir.getStartDegreeForFirstView(), dir.getEndDegreeForFirstView(), centerX, centerY, FlipAnimation.ScaleUpDownEnum.SCALE_DOWN);
+		outFlip.setDuration((long) 500);
 		outFlip.setFillAfter(true);
-		outFlip.setInterpolator(interpolator==null?new AccelerateInterpolator():interpolator); 
+		outFlip.setInterpolator(new AccelerateInterpolator());
 
 		AnimationSet outAnimation = new AnimationSet(true);
 		outAnimation.addAnimation(outFlip); 
@@ -127,11 +124,11 @@ public class AnimationFactory {
 		//centerX = toView.getWidth() / 2.0f;
 		//centerY = toView.getHeight() / 2.0f; 
 		
-		Animation inFlip = new FlipAnimation(dir.getStartDegreeForSecondView(), dir.getEndDegreeForSecondView(), centerX, centerY, FlipAnimation.SCALE_DEFAULT, FlipAnimation.ScaleUpDownEnum.SCALE_UP);
-		inFlip.setDuration(duration);
+		Animation inFlip = new FlipAnimation(dir.getStartDegreeForSecondView(), dir.getEndDegreeForSecondView(), centerX, centerY, FlipAnimation.ScaleUpDownEnum.SCALE_UP);
+		inFlip.setDuration((long) 500);
 		inFlip.setFillAfter(true);
-		inFlip.setInterpolator(interpolator==null?new AccelerateInterpolator():interpolator);
-		inFlip.setStartOffset(duration);   
+		inFlip.setInterpolator(new AccelerateInterpolator());
+		inFlip.setStartOffset((long) 500);
 		
 		AnimationSet inAnimation = new AnimationSet(true); 
 		inAnimation.addAnimation(inFlip); 
@@ -144,11 +141,10 @@ public class AnimationFactory {
 	/**
 	 * Flip to the next view of the {@code ViewAnimator}'s subviews. A call to this method will initiate a {@link FlipAnimation} to show the next View.  
 	 * If the currently visible view is the last view, flip direction will be reversed for this transition.
-	 *  
-	 * @param viewAnimator the {@code ViewAnimator}
-	 * @param dir the direction of flip
-	 */
-	public static void flipTransition(final ViewAnimator viewAnimator, FlipDirection dir) {   
+	 *  @param viewAnimator the {@code ViewAnimator}
+	 *
+     */
+	public static void flipTransition(final ViewAnimator viewAnimator) {
 		
 		final View fromView = viewAnimator.getCurrentView();
 		final int currentIndex = viewAnimator.getDisplayedChild();
@@ -156,7 +152,7 @@ public class AnimationFactory {
 		
 		final View toView = viewAnimator.getChildAt(nextIndex);
 
-		Animation[] animc = AnimationFactory.flipAnimation(fromView, toView, (nextIndex < currentIndex?dir.theOtherDirection():dir), 500, null);
+		Animation[] animc = AnimationFactory.flipAnimation(fromView, (nextIndex < currentIndex? FlipDirection.LEFT_RIGHT.theOtherDirection(): FlipDirection.LEFT_RIGHT));
   
 		viewAnimator.setOutAnimation(animc[0]);
 		viewAnimator.setInAnimation(animc[1]);
@@ -271,18 +267,18 @@ public class AnimationFactory {
 	} 
 
 
-	public static Animation fadeInAnimation(long duration, long delay) {  
+	private static Animation fadeInAnimation(long duration) {
 		
 		Animation fadeIn = new AlphaAnimation(0, 1);
 		fadeIn.setInterpolator(new DecelerateInterpolator());  
 		fadeIn.setDuration(duration);
-		fadeIn.setStartOffset(delay);
+		fadeIn.setStartOffset((long) 0);
 		
 		return fadeIn;
 	}
 
 
-	public static Animation fadeOutAnimation(long duration, long delay) {   
+	private static Animation fadeOutAnimation(long duration, long delay) {
 
 		Animation fadeOut = new AlphaAnimation(1, 0);
 		fadeOut.setInterpolator(new AccelerateInterpolator());
@@ -295,11 +291,10 @@ public class AnimationFactory {
 	/**
 	 * A fade animation that will ensure the View starts and ends with the correct visibility
 	 * @param view the View to be faded in
-	 * @param duration the animation duration in milliseconds
 	 * @return a fade animation that will set the visibility of the view at the start and end of animation
 	 */
-	public static Animation fadeInAnimation(long duration, final View view) { 
-		Animation animation = fadeInAnimation(500, 0); 
+	private static Animation fadeInAnimation(final View view) {
+		Animation animation = fadeInAnimation(500);
 
 	    animation.setAnimationListener(new AnimationListener() { 
 			@Override
@@ -323,10 +318,9 @@ public class AnimationFactory {
 	/**
 	 * A fade animation that will ensure the View starts and ends with the correct visibility
 	 * @param view the View to be faded out
-	 * @param duration the animation duration in milliseconds
 	 * @return a fade animation that will set the visibility of the view at the start and end of animation
 	 */
-	public static Animation fadeOutAnimation(long duration, final View view) {
+	private static Animation fadeOutAnimation(final View view) {
 		
 		Animation animation = fadeOutAnimation(500, 0); 
 
@@ -352,12 +346,11 @@ public class AnimationFactory {
 
 	/**
 	 * Creates a pair of animation that will fade in, delay, then fade out
-	 * @param duration the animation duration in milliseconds
 	 * @param delay how long to wait after fading in the subject and before starting the fade out
 	 * @return a fade in then out animations
 	 */
-	public static Animation[] fadeInThenOutAnimation(long duration, long delay) {  
-		return new Animation[] {fadeInAnimation(duration,0), fadeOutAnimation(duration, duration+delay)};
+	private static Animation[] fadeInThenOutAnimation(long delay) {
+		return new Animation[] {fadeInAnimation((long) 500), fadeOutAnimation((long) 500, (long) 500 +delay)};
 	}  
 	
 	/**
@@ -366,7 +359,7 @@ public class AnimationFactory {
 	 */
 	public static void fadeOut(View v) { 
 		if (v==null) return;  
-	    v.startAnimation(fadeOutAnimation(500, v)); 
+	    v.startAnimation(fadeOutAnimation(v));
 	} 
 	
 	/**
@@ -376,7 +369,7 @@ public class AnimationFactory {
 	public static void fadeIn(View v) { 
 		if (v==null) return;
 		
-	    v.startAnimation(fadeInAnimation(500, v)); 
+	    v.startAnimation(fadeInAnimation(v));
 	}
 	
 	/**
@@ -389,7 +382,7 @@ public class AnimationFactory {
 		 
 		v.setVisibility(View.VISIBLE);
 		AnimationSet animation = new AnimationSet(true);
-		Animation[] fadeInOut = fadeInThenOutAnimation(500,delay); 
+		Animation[] fadeInOut = fadeInThenOutAnimation(delay);
 	    animation.addAnimation(fadeInOut[0]);
 	    animation.addAnimation(fadeInOut[1]);
 	    animation.setAnimationListener(new AnimationListener() { 

@@ -11,9 +11,9 @@ import android.widget.Toast;
  */
 public class FBRecyclerViewActivity extends AppCompatActivity implements OnClickIListener
 {
-    ActionBar MyActionBar;
-    Toolbar MyToolBar;
-    SearchParams SearchObject;
+    private ActionBar MyActionBar;
+    private Toolbar MyToolBar;
+    private SearchParams SearchObject;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -34,14 +34,14 @@ public class FBRecyclerViewActivity extends AppCompatActivity implements OnClick
         if (savedInstanceState != null)
             fragment = (FBRecyclerView_Fragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
         else
-            FBRecyclerViewActivity.this.FragmentSelected(0);
+            FBRecyclerViewActivity.this.FragmentSelected();
 
     }
 
     @Override
-    public void FragmentSelected(int Section) {
+    public void FragmentSelected() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.Coverpage, FBRecyclerView_Fragment.FragmentFactory(Section, SearchObject))
+                .replace(R.id.Coverpage, FBRecyclerView_Fragment.FragmentFactory(0, SearchObject))
                 .commit();
     }
 

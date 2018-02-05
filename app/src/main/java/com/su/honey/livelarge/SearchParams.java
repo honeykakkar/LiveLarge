@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 
 @JsonIgnoreProperties({"selection"})
-public class SearchParams implements Serializable
+class SearchParams implements Serializable
 {
     public String getPropertyType() {
         return PropertyType;

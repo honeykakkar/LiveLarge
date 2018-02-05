@@ -95,14 +95,14 @@ public class RecyclerViewActivity extends AppCompatActivity implements Navigatio
         }
         else
         {
-            RecyclerViewActivity.this.FragmentSelected(0);
+            RecyclerViewActivity.this.FragmentSelected();
         }
     }
 
     @Override
-    public void FragmentSelected(int Section) {
+    public void FragmentSelected() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.Coverpage, RecyclerView_Fragment.FragmentFactory(Section, Results))
+                .replace(R.id.Coverpage, RecyclerView_Fragment.FragmentFactory(0, Results))
                 .commit();
     }
 

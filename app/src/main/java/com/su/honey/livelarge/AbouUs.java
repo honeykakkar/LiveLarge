@@ -20,8 +20,7 @@ public class AbouUs extends Fragment {
 
 
     public static AbouUs newInstance() {
-        AbouUs fragment = new AbouUs();
-        return fragment;
+        return new AbouUs();
     }
 
     @Override

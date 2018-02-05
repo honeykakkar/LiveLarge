@@ -18,25 +18,23 @@ import com.firebase.ui.FirebaseRecyclerAdapter;
  */
 public class FBRecyclerViewAdapter extends FirebaseRecyclerAdapter<Serializable_PropData, FBRecyclerViewAdapter.MyViewHolder> {
 
-    private Context context;
-    static EventHandler EHandler;
-    SearchParams ASearchObject;
-    static View CurrentCardView;
-    static ViewGroup Parent;
+    private static EventHandler EHandler;
+    private final SearchParams ASearchObject;
+    private static View CurrentCardView;
+    private static ViewGroup Parent;
 
-    public FBRecyclerViewAdapter(Class<Serializable_PropData> modelClass, int modelLayout,
+    public FBRecyclerViewAdapter(Class<Serializable_PropData> modelClass,
                                  Class<MyViewHolder> viewHolderClass,
                                  Query ref, Context mcontext, SearchParams searchParams)
     {
-        super(modelClass, modelLayout, viewHolderClass, ref);
-        this.context = mcontext;
+        super(modelClass, R.layout.cardview, viewHolderClass, ref);
         this.ASearchObject = searchParams;
         Log.d("Honey", "adapter const");
     }
 
     public void SetEventHandler(EventHandler MyEventHandler)
     {
-        this.EHandler = MyEventHandler;
+        EHandler = MyEventHandler;
     }
 
 
@@ -45,8 +43,7 @@ public class FBRecyclerViewAdapter extends FirebaseRecyclerAdapter<Serializable_
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Parent = parent;
         CurrentCardView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
-        MyViewHolder Current = new MyViewHolder(CurrentCardView);
-        return Current;
+        return new MyViewHolder(CurrentCardView);
     }
     @Override
     protected void populateViewHolder(MyViewHolder myViewHolder, Serializable_PropData serializablepropdata, int i) {
@@ -71,11 +68,11 @@ public class FBRecyclerViewAdapter extends FirebaseRecyclerAdapter<Serializable_
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView PropertyPrice;
+        public final TextView PropertyPrice;
         public ImageView PropertyImage;
-        public TextView PropertyName;
-        public TextView PropertyType;
-        public TextView PropertyBeds;
+        public final TextView PropertyName;
+        public final TextView PropertyType;
+        public final TextView PropertyBeds;
 
         public MyViewHolder(final View V) {
             super(V);

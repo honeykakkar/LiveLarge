@@ -1,15 +1,20 @@
 package com.su.honey.livelarge;
+
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -36,15 +41,12 @@ public class LocationFragment extends Fragment implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener
-{
+        LocationListener {
 
     private static final String ARG_PROPDATA = "propdata";
     private Serializable_PropData propData;
     private static GoogleApiClient mGoogleApiClient;
-    private SupportMapFragment mMapFragment;
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    private Location mLastLocation;
+    private GoogleMap mMap;
 
     public LocationFragment() {
         // Required empty public constructor
@@ -62,10 +64,10 @@ public class LocationFragment extends Fragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        if (getArguments() != null){
+        if (getArguments() != null) {
             propData = (Serializable_PropData) getArguments().getSerializable(ARG_PROPDATA);
         }
-        if(savedInstanceState==null){
+        if (savedInstanceState == null) {
             buildGoogleApiClient();
         }
     }
@@ -73,16 +75,25 @@ public class LocationFragment extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.fragment_location, container, false);
-        return rootview;
+        return inflater.inflate(R.layout.fragment_location, container, false);
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        if (ActivityCompat.checkSelfPermission(this.getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         mMap.setMyLocationEnabled(true);
 
         Barcode.GeoPoint ResultLocation = determineLatLngFromAddress(propData.getProp_address() + " " + propData.getProp_city() + " " + propData.getProp_state());
@@ -100,10 +111,10 @@ public class LocationFragment extends Fragment implements
             }
         });
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener(){
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
-            public boolean onMarkerClick(Marker marker){
-                Toast.makeText(getContext(), marker.getTitle().toString(), Toast.LENGTH_SHORT).show();
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(getContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -114,13 +125,14 @@ public class LocationFragment extends Fragment implements
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.googlemap);
-        if(mMapFragment!=null){
+        SupportMapFragment mMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.googlemap);
+        if (mMapFragment != null) {
             mMapFragment.getMapAsync(this);
         }
     }
+
     private void buildGoogleApiClient() {
-        if(mGoogleApiClient==null){
+        if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
@@ -135,12 +147,22 @@ public class LocationFragment extends Fragment implements
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 mGoogleApiClient, mLocationRequest, this);
 
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+        if (ActivityCompat.checkSelfPermission(this.getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult result) {
+    public void onConnectionFailed(@NonNull ConnectionResult result) {
         // Refer to the javadoc for ConnectionResult to see what error codes might be returned in
         // onConnectionFailed.
         Log.i("onConnectionFailed ", "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
@@ -175,7 +197,7 @@ public class LocationFragment extends Fragment implements
         return mLocationRequest;
     }
 
-    LatLng latLng_Prev = null;
+    private LatLng latLng_Prev = null;
     @Override
     public void onLocationChanged(Location location) {
         //move camera when location changed
@@ -198,7 +220,7 @@ public class LocationFragment extends Fragment implements
         latLng_Prev=latLng_Now;
     }
 
-    public Barcode.GeoPoint determineLatLngFromAddress(String strAddress)
+    private Barcode.GeoPoint determineLatLngFromAddress(String strAddress)
     {
         Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
         Barcode.GeoPoint g = null;
@@ -206,8 +228,7 @@ public class LocationFragment extends Fragment implements
             System.out.println("str addres: " + strAddress);
             List<Address> addresses = geocoder.getFromLocationName(strAddress, 1);
             if (addresses.size() > 0) {
-                g = new Barcode.GeoPoint(
-                        1, addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
+                g = new Barcode.GeoPoint(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
             }
         }
         catch (Exception e) {

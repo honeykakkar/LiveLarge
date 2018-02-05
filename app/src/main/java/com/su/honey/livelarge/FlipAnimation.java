@@ -47,26 +47,24 @@ public class FlipAnimation extends Animation {
 	/**
 	 * How much to scale up/down. The default scale of 75% of full size seems optimal based on testing. Feel free to experiment away, however.
 	 */ 
-	public static final float SCALE_DEFAULT = 0.75f;
+	private static final float SCALE_DEFAULT = 0.75f;
 	
-	private float scale;
+	private final float scale;
 
 	/**
 	 * Constructs a new {@code FlipAnimation} object.Two {@code FlipAnimation} objects are needed for a complete transition b/n two views. 
-	 * 
-	 * @param fromDegrees the start angle in degrees for a rotation along the y-axis, i.e. in-and-out of the screen, i.e. 3D flip. This should really be multiple of 90 degrees.
+	 *  @param fromDegrees the start angle in degrees for a rotation along the y-axis, i.e. in-and-out of the screen, i.e. 3D flip. This should really be multiple of 90 degrees.
 	 * @param toDegrees the end angle in degrees for a rotation along the y-axis, i.e. in-and-out of the screen, i.e. 3D flip. This should really be multiple of 90 degrees.
-	 * @param centerX the x-axis value of the center of rotation
-	 * @param centerY the y-axis value of the center of rotation
-	 * @param scale to get a 3D effect, the transition views need to be zoomed (scaled). This value must be b/n (0,1) or else the default scale {@link #SCALE_DEFAULT} is used.
-	 * @param scaleType flip view transition is broken down into two: the zoom-out of the "from" view and the zoom-in of the "to" view. This parameter is used to determine which is being done. See {@link ScaleUpDownEnum}.
-	 */
-	public FlipAnimation(float fromDegrees, float toDegrees, float centerX, float centerY, float scale, ScaleUpDownEnum scaleType) {
+     * @param centerX the x-axis value of the center of rotation
+     * @param centerY the y-axis value of the center of rotation
+     * @param scaleType flip view transition is broken down into two: the zoom-out of the "from" view and the zoom-in of the "to" view. This parameter is used to determine which is being done. See {@link ScaleUpDownEnum}.
+     */
+	public FlipAnimation(float fromDegrees, float toDegrees, float centerX, float centerY, ScaleUpDownEnum scaleType) {
 		mFromDegrees = fromDegrees;
 		mToDegrees = toDegrees;
 		mCenterX = centerX;
 		mCenterY = centerY;
-		this.scale = (scale<=0||scale>=1)?SCALE_DEFAULT:scale;
+		this.scale = (FlipAnimation.SCALE_DEFAULT <=0|| FlipAnimation.SCALE_DEFAULT >=1)?SCALE_DEFAULT: FlipAnimation.SCALE_DEFAULT;
 		this.scaleType = scaleType==null?ScaleUpDownEnum.SCALE_CYCLE:scaleType;
 	}
 
@@ -108,7 +106,7 @@ public class FlipAnimation extends Animation {
 	 * @author Ephraim A. Tekle 
 	 *
 	 */
-	public static enum ScaleUpDownEnum {
+	public enum ScaleUpDownEnum {
 		/**
 		 * The view will be scaled up from the scale value until it's at 100% zoom level (i.e. no zoom).
 		 */

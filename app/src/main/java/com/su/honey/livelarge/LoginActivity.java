@@ -4,7 +4,7 @@ package com.su.honey.livelarge;
  * Created by honey on 4/17/2016.
  */
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.os.Bundle;
@@ -26,7 +26,6 @@ import com.firebase.client.FirebaseError;
 import com.firebase.ui.auth.core.AuthProviderType;
 import com.firebase.ui.auth.core.FirebaseLoginBaseActivity;
 import com.firebase.ui.auth.core.FirebaseLoginError;
-import com.facebook.FacebookSdk;
 import com.squareup.picasso.Picasso;
 
 import java.util.Map;
@@ -35,20 +34,20 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LoginActivity extends FirebaseLoginBaseActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    Firebase firebaseRef;
-    EditText userNameET;
-    EditText passwordET;
-    ActionBar MyActionBar;
-    Toolbar MyToolBar;
+    private Firebase firebaseRef;
+    private EditText userNameET;
+    private EditText passwordET;
+    private ActionBar MyActionBar;
+    private Toolbar MyToolBar;
     Spinner States;
     Spinner Cities;
-    NavigationView MyNavView;
-    DrawerLayout MyDrawLayout;
+    private NavigationView MyNavView;
+    private DrawerLayout MyDrawLayout;
     static CircleImageView Logo;
-    static TextView Usertitle;
-    static MenuItem LoginItem;
-    String mName = "";
-    String PicUrl = "";
+    private static TextView Usertitle;
+    private static MenuItem LoginItem;
+    private String mName = "";
+    private String PicUrl = "";
 
     /* String Constants */
     private static final String FIREBASEREF = "https://livelarge.firebaseio.com/";
@@ -85,7 +84,7 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
         if(firebaseRef.getAuth() != null && CurrentUser.getUserName() != null) {
-            View HeaderView = (View) MyNavView.getHeaderView(0);
+            View HeaderView = MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
             Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
@@ -183,7 +182,7 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
     }
 
     // create a new user in Firebase
-    public void createUser() {
+    private void createUser() {
         if(userNameET.getText() == null ||  !isEmailValid(userNameET.getText().toString())) {
             return;
         }
@@ -204,7 +203,7 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
         int ID = item.getItemId();
         switch (ID)
@@ -223,7 +222,7 @@ public class LoginActivity extends FirebaseLoginBaseActivity implements Navigati
                 }
                 else
                 {
-                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    View HeaderView = MyNavView.getHeaderView(0);
                     CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
                     Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
                     Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);

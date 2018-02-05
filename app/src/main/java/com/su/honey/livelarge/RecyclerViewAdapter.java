@@ -3,39 +3,25 @@ package com.su.honey.livelarge;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by honey on 2/20/2016.
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements EventHandler{
-    OnClickIListener IListener;
-    EventHandler EHandler;
-    public Context MyContext;
-    public static List<Serializable_PropData> ResultProps;
+    private OnClickIListener IListener;
+    private EventHandler EHandler;
+    private final Context MyContext;
+    private static List<Serializable_PropData> ResultProps;
 
     public RecyclerViewAdapter(Context context, List<Serializable_PropData> resultprops) {
         this.MyContext = context;
@@ -78,11 +64,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView PropertyPrice;
-        public ImageView PropertyImage;
-        public TextView PropertyName;
-        public TextView PropertyType;
-        public TextView PropertyBeds;
+        public final TextView PropertyPrice;
+        public final ImageView PropertyImage;
+        public final TextView PropertyName;
+        public final TextView PropertyType;
+        public final TextView PropertyBeds;
 
         public MyViewHolder(final View V) {
             super(V);
@@ -101,7 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    protected Bitmap Base64toImage(String img){
+    private Bitmap Base64toImage(String img){
         Bitmap bitmap = null;
         try{
             byte [] encodeByte= Base64.decode(img.getBytes(), Base64.DEFAULT);

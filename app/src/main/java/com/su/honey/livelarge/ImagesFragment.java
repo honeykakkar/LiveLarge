@@ -18,7 +18,7 @@ public class ImagesFragment extends Fragment {
 
     private static final String ARG_PROPDATA = "propdata";
     private Serializable_PropData propData;
-    ImageView houseimage;
+    private ImageView houseimage;
 
     public ImagesFragment() {
         // Required empty public constructor
@@ -62,7 +62,7 @@ public class ImagesFragment extends Fragment {
         return rootView;
     }
 
-    protected Bitmap setBackdropImage(String img){
+    private Bitmap setBackdropImage(String img){
         Bitmap bitmap = null;
         try{
             byte [] encodeByte= Base64.decode(img.getBytes(), Base64.DEFAULT);

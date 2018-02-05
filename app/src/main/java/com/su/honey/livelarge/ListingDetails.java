@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 
 
 public class ListingDetails extends AppCompatActivity implements OnClickIListener{
-    Serializable_PropData propData;
+    private Serializable_PropData propData;
 
 
     @Override
@@ -60,7 +60,7 @@ public class ListingDetails extends AppCompatActivity implements OnClickIListene
     }
 
     @Override
-    public void FragmentSelected(int Section) {
+    public void FragmentSelected() {
 
     }
 
@@ -72,7 +72,7 @@ public class ListingDetails extends AppCompatActivity implements OnClickIListene
     @Override
     public void GetPropDetails(Serializable_PropData SP) {
 
-        String _city = SP.getProp_city();;
+        String _city = SP.getProp_city();
         String _addr = SP.getProp_address();
         String _ownerName = SP.getProp_owner();
         Intent sharingIntent=new Intent(android.content.Intent.ACTION_SEND);

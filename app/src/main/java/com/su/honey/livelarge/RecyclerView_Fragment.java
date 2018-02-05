@@ -1,28 +1,17 @@
 package com.su.honey.livelarge;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
@@ -36,8 +25,8 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
 {
     public RecyclerView_Fragment(){}
     private static final String SECTION = "SECTION";
-    static int ID;
-    public static List<Serializable_PropData> ResultProps;
+    private static int ID;
+    private static List<Serializable_PropData> ResultProps;
     public static RecyclerView_Fragment FragmentFactory(int SectionID, List<Serializable_PropData> results)
     {
         ID = SectionID;
@@ -50,9 +39,8 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
     }
     private RecyclerView MyRCView;
     private RecyclerViewAdapter MyRCAdapter;
-    private RecyclerView.LayoutManager MyRCLManager;
-    protected OnClickIListener IReference;
-    View RootView = null;
+    private OnClickIListener IReference;
+    private View RootView = null;
 
 
     @Override
@@ -77,8 +65,8 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
             throw new ClassCastException("OOPS!!");
         }
 
-        MyRCLManager = new LinearLayoutManager(getActivity());
-        MyRCView.setLayoutManager(MyRCLManager);
+        RecyclerView.LayoutManager myRCLManager = new LinearLayoutManager(getActivity());
+        MyRCView.setLayoutManager(myRCLManager);
         MyRCAdapter = new RecyclerViewAdapter(getActivity(), ResultProps);
         MyRCView.setAdapter(MyRCAdapter);
         MyRCAdapter.SetEventHandler(new EventHandler() {
@@ -106,7 +94,7 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         return index;
     }
 
-    public void ItemAnimation()
+    private void ItemAnimation()
     {
         SlideInLeftAnimator ItemAnimator = new SlideInLeftAnimator();
         ItemAnimator.setInterpolator( new OvershootInterpolator());
@@ -115,7 +103,7 @@ public class RecyclerView_Fragment extends android.support.v4.app.Fragment imple
         MyRCView.setItemAnimator(ItemAnimator);
     }
 
-    public void AdapterAnimation()
+    private void AdapterAnimation()
     {
         AlphaInAnimationAdapter ADP = new AlphaInAnimationAdapter(MyRCAdapter);
         ScaleInAnimationAdapter AnimatedAdaptor = new ScaleInAnimationAdapter(ADP);

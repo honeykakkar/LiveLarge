@@ -9,9 +9,9 @@ import java.util.Map;
 /**
  * Created by honey on 4/27/2016.
  */
-public class AllListings
+class AllListings
 {
-    static List<Serializable_PropData> All_Listings = new ArrayList<Serializable_PropData>();
+    static final List<Serializable_PropData> All_Listings = new ArrayList<>();
     static Serializable_PropData ListingFactory(HashMap dataSnapshot)
     {
         Serializable_PropData current_listing = new Serializable_PropData();

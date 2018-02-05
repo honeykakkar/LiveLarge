@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,7 +26,7 @@ public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment imp
     public FBRecyclerView_Fragment(){}
     private static final String SECTION = "SECTION";
     private static SearchParams FSearchObject = null;
-    static int ID;
+    private static int ID;
     public static FBRecyclerView_Fragment FragmentFactory(int SectionID, SearchParams searchParams)
     {
         ID = SectionID;
@@ -40,9 +39,8 @@ public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment imp
     }
     private RecyclerView MyRCView;
     private FBRecyclerViewAdapter MyFirebaseRVAdapter;
-    private RecyclerView.LayoutManager MyRCLManager;
-    protected OnClickIListener IReference;
-    View RootView = null;
+    private OnClickIListener IReference;
+    private View RootView = null;
 
 
     @Override
@@ -68,11 +66,11 @@ public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment imp
             throw new ClassCastException("OOPS!!");
         }
 
-        MyRCLManager = new LinearLayoutManager(getActivity());
-        MyRCView.setLayoutManager(MyRCLManager);
+        RecyclerView.LayoutManager myRCLManager = new LinearLayoutManager(getActivity());
+        MyRCView.setLayoutManager(myRCLManager);
 
         final Firebase QueryRef = new Firebase("https://livelarge.firebaseio.com/Listings");
-        MyFirebaseRVAdapter = new FBRecyclerViewAdapter(Serializable_PropData.class, R.layout.cardview,
+        MyFirebaseRVAdapter = new FBRecyclerViewAdapter(Serializable_PropData.class,
                 FBRecyclerViewAdapter.MyViewHolder.class, QueryRef, getActivity(), FSearchObject);
         MyRCView.setAdapter(MyFirebaseRVAdapter);
         ItemAnimation();
@@ -80,7 +78,7 @@ public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment imp
         return RootView;
     }
 
-    public void ItemAnimation()
+    private void ItemAnimation()
     {
         SlideInLeftAnimator ItemAnimator = new SlideInLeftAnimator();
         ItemAnimator.setInterpolator( new OvershootInterpolator());
@@ -89,7 +87,7 @@ public class FBRecyclerView_Fragment extends android.support.v4.app.Fragment imp
         MyRCView.setItemAnimator(ItemAnimator);
     }
 
-    public void AdapterAnimation()
+    private void AdapterAnimation()
     {
         AlphaInAnimationAdapter ADP = new AlphaInAnimationAdapter(MyFirebaseRVAdapter);
         ScaleInAnimationAdapter AnimatedAdaptor = new ScaleInAnimationAdapter(ADP);

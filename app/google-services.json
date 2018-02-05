@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1018970227368",
+    "firebase_url": "https://live-large-66de9.firebaseio.com",
+    "project_id": "live-large",
+    "storage_bucket": "live-large.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018970227368:android:ef7b39127bb9f692",
+        "android_client_info": {
+          "package_name": "com.su.honey.livelarge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018970227368-ofm9vnt6b2ikjmrpcma1jkf0kecqe23o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.su.honey.livelarge",
+            "certificate_hash": "1daec3bf6946a81f1a6759cf73de8310af6cff5f"
+          }
+        },
+        {
+          "client_id": "1018970227368-69edmvujn8i1sv2a657m3n506udrsrbk.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1018970227368-p81s7d7s4gnbb9a1eurrk0hqpspdmns0.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1018970227368-h84hccpflj03i5tfkkn9g62ras2fsem6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.su.honey.livelarge",
+            "certificate_hash": "2f647e6c3b929d876cbc85c8fab3f7e447342d1e"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDxIwBAVKSQ-2-LoUOjSy9OfCxfNrOlTM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018970227368-69edmvujn8i1sv2a657m3n506udrsrbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

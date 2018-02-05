@@ -1,11 +1,9 @@
 package com.su.honey.livelarge;
 
-import android.graphics.Bitmap;
-
 /**
  * Created by honey on 4/30/2016.
  */
-public class CurrentUser {
+class CurrentUser {
 
     private static String UserEmail;
     private static String UserName;

@@ -1,17 +1,17 @@
 package com.su.honey.livelarge;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
@@ -22,14 +22,14 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AboutUs extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    ActionBar MyActionBar;
-    Toolbar MyToolBar;
-    NavigationView MyNavView;
-    DrawerLayout MyDrawLayout;
+    private ActionBar MyActionBar;
+    private Toolbar MyToolBar;
+    private NavigationView MyNavView;
+    private DrawerLayout MyDrawLayout;
     static CircleImageView Logo;
-    static TextView Usertitle;
-    static MenuItem LoginItem;
-    Firebase QueryRef;
+    private static TextView Usertitle;
+    private static MenuItem LoginItem;
+    private Firebase QueryRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class AboutUs extends AppCompatActivity implements NavigationView.OnNavig
         MyDrawLayout = (DrawerLayout)findViewById(R.id.NavigationDrawer);
 
         if(CurrentUser.getUserName() != null) {
-            View HeaderView = (View) MyNavView.getHeaderView(0);
+            View HeaderView = MyNavView.getHeaderView(0);
             CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
             Picasso.with(getApplicationContext()).load(CurrentUser.getUserImageURL()).into(Logo);
             Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
@@ -72,13 +72,13 @@ public class AboutUs extends AppCompatActivity implements NavigationView.OnNavig
         viewAnimator1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AnimationFactory.flipTransition(viewAnimator1, AnimationFactory.FlipDirection.LEFT_RIGHT);
+                AnimationFactory.flipTransition(viewAnimator1);
             }
         });
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
         int ID = item.getItemId();
         switch (ID)
@@ -97,7 +97,7 @@ public class AboutUs extends AppCompatActivity implements NavigationView.OnNavig
                 }
                 else
                 {
-                    View HeaderView = (View) MyNavView.getHeaderView(0);
+                    View HeaderView = MyNavView.getHeaderView(0);
                     CircleImageView Logo = (CircleImageView) HeaderView.findViewById(R.id.navheader_image);
                     Usertitle = (TextView) HeaderView.findViewById(R.id.navheader_label);
                     LoginItem = MyNavView.getMenu().getItem(1);
